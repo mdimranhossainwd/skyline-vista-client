@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,9 +11,7 @@ export const Navbar = () => {
         <div className="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
           {/* Logo Section */}
           <div className="flex items-center justify-between w-full">
-            <a href="#">
-              <h3>Skyline</h3>
-            </a>
+            <Link className="text-2xl font-bold text-[#E21B60]">Skyline</Link>
 
             {/* Right Side (Mobile toggle and dark mode) */}
             <div className="flex items-center  gap-4 md:ml-auto md:hidden">
@@ -69,15 +68,12 @@ export const Navbar = () => {
           >
             {/* On Desktop, menu items aligned to the right */}
             <div className="flex flex-col items-center md:flex-row md:items-center md:gap-6 md:ml-auto md:justify-end">
-              <a href="#" className="px-4 py-2 ">
-                Home
-              </a>
-              <a href="#" className="px-4 py-2">
-                About
-              </a>
-              <a href="#" className="px-4 py-2">
-                Contact
-              </a>
+              <NavLink>Home</NavLink>
+              <NavLink>About</NavLink>
+              <NavLink>Property</NavLink>
+              <NavLink>Contact</NavLink>
+              <NavLink>Service</NavLink>
+              <NavLink>Login</NavLink>
             </div>
           </div>
         </div>
