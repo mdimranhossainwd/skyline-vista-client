@@ -1,9 +1,11 @@
 import Banner from "../components/banner/Banner";
+import { Description } from "../components/sections/Description";
 
 export default function Homepage() {
   return (
-    <div>
+    <>
       <Banner />
-    </div>
+      <Description />
+    </>
   );
 }
