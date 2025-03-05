@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 export const SignUp = () => {
   return (
-    <div className="flex h-screen w-full container mx-auto">
+    <div className="flex min-h-screen w-full container mx-auto">
       {/* Left Side: Form Section */}
-      <div className="flex items-center justify-center w-full lg:w-1/2 p-8">
-        <div className="max-w-md w-full">
+      <div className="flex items-center justify-center w-full lg:w-1/2 p-8 ">
+        <div className="max-w-md w-full ">
           <form>
             <h2 className="text-2xl font-semibold text-gray-900">
               Sign in or create an account
@@ -100,7 +100,7 @@ export const SignUp = () => {
             Continue with Google
           </button>
 
-          <div className="flex items-center justify-center my-10">
+          <div className="flex items-center justify-center mt-6">
             <p className="text-sm font-medium">
               Already Have an account ?{" "}
               <Link className="text-[#E21B60]">Sign In</Link>
@@ -111,7 +111,7 @@ export const SignUp = () => {
 
       {/* Right Side: Image Section */}
       <div
-        className="hidden lg:flex w-1/2 rounded-lg my-1 bg-cover bg-center"
+        className="hidden lg:flex w-1/2 rounded-lg bg-cover bg-center"
         style={{
           backgroundImage:
             "url('https://images.pexels.com/photos/13608798/pexels-photo-13608798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",

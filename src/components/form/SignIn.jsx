@@ -34,10 +34,10 @@ export const SignIn = () => {
             {/* Form */}
             <div className="mt-6">
               <label className="block text-sm font-medium text-gray-700">
-                Name
+                Email
               </label>
               <input
-                type="text"
+                type="email"
                 className="mt-1 block w-full px-4 py-2 border  focus:ring focus:ring-[#E9E9E9]"
                 style={{
                   borderColor: "#E9E9E9",
@@ -47,10 +47,10 @@ export const SignIn = () => {
 
             <div className="mt-4">
               <label className="block text-sm font-medium text-gray-700">
-                Email address
+                Enter Password
               </label>
               <input
-                type="email"
+                type="password"
                 className="mt-1 block w-full px-4 py-2 border  focus:ring focus:ring-[#E9E9E9]"
                 style={{
                   borderColor: "#E9E9E9",
