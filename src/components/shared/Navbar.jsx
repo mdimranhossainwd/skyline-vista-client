@@ -11,7 +11,9 @@ export const Navbar = () => {
         <div className="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
           {/* Logo Section */}
           <div className="flex items-center justify-between w-full">
-            <Link className="text-2xl font-bold text-[#E21B60]">Skyline</Link>
+            <Link className="text-2xl font-ubuntu font-semibold text-[#E21B60]">
+              Skyline
+            </Link>
 
             {/* Right Side (Mobile toggle and dark mode) */}
             <div className="flex items-center  gap-4 md:ml-auto md:hidden">
@@ -67,7 +69,7 @@ export const Navbar = () => {
             }`}
           >
             {/* On Desktop, menu items aligned to the right */}
-            <div className="flex flex-col items-center md:flex-row md:items-center md:gap-6 md:ml-auto md:justify-end">
+            <div className="flex font-ubuntu font-medium flex-col items-center md:flex-row md:items-center md:gap-6 md:ml-auto md:justify-end">
               <NavLink>Home</NavLink>
               <NavLink>About</NavLink>
               <NavLink>Property</NavLink>
