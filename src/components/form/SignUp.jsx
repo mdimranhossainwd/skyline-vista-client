@@ -20,7 +20,7 @@ export const SignUp = () => {
       const result = await createUser(email, password);
       await updateUserProfile(name, photo);
       setUser({ ...result?.user, photoURL: photo, displayName: name });
-      await axios.post("/add-post", {
+      await axios.post("/add-user", {
         name,
         email,
         photo,
