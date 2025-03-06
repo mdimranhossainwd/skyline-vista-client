@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAxios } from "../../hooks/useAxios";
 
 export const SignUp = () => {
+  const axios = useAxios();
+
   return (
     <div className="flex min-h-screen w-full container mx-auto">
       {/* Left Side: Form Section */}
