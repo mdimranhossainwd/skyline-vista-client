@@ -1,15 +1,43 @@
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 
 export const SignUp = () => {
   const axios = useAxios();
+  const { createUser, user, updateUserProfile, setUser } = useAuth();
+  const { register, handleSubmit } = useForm();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state || "/";
+
+  const handleSignUp = async (data) => {
+    const { email, name, password, photo } = data;
+    console.log({ email, name, password, photo });
+
+    try {
+      const result = await createUser(email, password);
+      await updateUserProfile(name, photo);
+      setUser({ ...result?.user, photoURL: photo, displayName: name });
+      await axios.post("/add-post", {
+        name,
+        email,
+        photo,
+      });
+      toast.success("Wow ! user successfully Register");
+      navigate(from, { replace: true });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="flex min-h-screen w-full container mx-auto">
       {/* Left Side: Form Section */}
       <div className="flex items-center justify-center w-full lg:w-1/2 p-8 ">
         <div className="max-w-md w-full ">
-          <form>
+          <form onSubmit={handleSubmit(handleSignUp)}>
             <h2 className="text-2xl font-semibold text-gray-900">
               Sign in or create an account
             </h2>
