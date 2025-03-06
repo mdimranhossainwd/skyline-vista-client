@@ -2,7 +2,12 @@ import { DropdownMenu } from "@radix-ui/themes";
 import { useAuth } from "../../hooks/useAuth";
 
 const AvatarDropdown = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
+
+  // User's LogOut Function
+  const handleLogOut = async () => {
+    await logOut();
+  };
 
   return (
     <DropdownMenu.Root>
@@ -25,7 +30,9 @@ const AvatarDropdown = () => {
         </div>
         <DropdownMenu.Separator />
         <DropdownMenu.Item>Dashboard</DropdownMenu.Item>
-        <DropdownMenu.Item color="red">Logout</DropdownMenu.Item>
+        <DropdownMenu.Item color="red" onClick={handleLogOut}>
+          Logout
+        </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   );
