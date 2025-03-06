@@ -22,7 +22,7 @@ export const SignUp = () => {
               <input
                 type="text"
                 id="name"
-                // {...register("name", { required: true })}
+                {...register("name", { required: true })}
                 className="mt-1 block w-full px-4 py-2 border  focus:ring focus:ring-[#E9E9E9]"
                 style={{
                   borderColor: "#E9E9E9",
@@ -37,7 +37,7 @@ export const SignUp = () => {
               <input
                 type="email"
                 id="email"
-                // {...register("email", { required: true })}
+                {...register("email", { required: true })}
                 className="mt-1 block w-full px-4 py-2 border  focus:ring focus:ring-[#E9E9E9]"
                 style={{
                   borderColor: "#E9E9E9",
@@ -52,7 +52,7 @@ export const SignUp = () => {
               <input
                 type="password"
                 id="password"
-                // {...register("password", { required: true })}
+                {...register("password", { required: true })}
                 className="mt-1 block w-full px-4 py-2 border  focus:ring focus:ring-[#E9E9E9]"
                 style={{
                   borderColor: "#E9E9E9",
@@ -67,7 +67,7 @@ export const SignUp = () => {
               <input
                 type="photo"
                 id="photo"
-                // {...register("photo", { required: true })}
+                {...register("photo", { required: true })}
                 className="mt-1 block w-full px-4 py-2 border focus:ring-[#E9E9E9]"
                 style={{
                   borderColor: "#E9E9E9",
