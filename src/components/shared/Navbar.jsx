@@ -1,13 +1,29 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+import AvatarDropdown from "../menu/AvatarDropdown ";
 
 export const Navbar = () => {
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
+  const navItems = (
+    <>
+      <NavLink>Home</NavLink>
+      <NavLink>About</NavLink>
+      <NavLink>Property</NavLink>
+      <NavLink>Contact</NavLink>
+      <NavLink>Service</NavLink>
+      {!user && <NavLink>Login</NavLink>}
+    </>
+  );
+
   return (
     <>
-      <nav className={`relative bg-[#F3F4F6] ${darkMode ? "dark" : ""}`}>
+      <nav
+        className={`relative bg-[#F3F4F6] flex py-2 ${darkMode ? "dark" : ""}`}
+      >
         <div className="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
           {/* Logo Section */}
           <div className="flex items-center justify-between w-full">
@@ -62,23 +78,20 @@ export const Navbar = () => {
 
           {/* Menu List */}
           <div
-            className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-[#F3F4F6]  md:mt-0 md:p-0 md:relative md:flex md:items-center md:ml-auto ${
+            className={`absolute inset-x-0 z-20  px-6 py-4 transition-all duration-300 ease-in-out bg-[#F3F4F6]  md:mt-0 md:p-0 md:relative md:flex md:items-center md:ml-auto ${
               isOpen
                 ? "translate-x-0 opacity-100"
                 : "opacity-0 -translate-x-full md:opacity-100 md:translate-x-0"
             }`}
           >
             {/* On Desktop, menu items aligned to the right */}
-            <div className="flex font-ubuntu font-medium flex-col items-center md:flex-row md:items-center md:gap-6 md:ml-auto md:justify-end">
-              <NavLink>Home</NavLink>
-              <NavLink>About</NavLink>
-              <NavLink>Property</NavLink>
-              <NavLink>Contact</NavLink>
-              <NavLink>Service</NavLink>
-              <NavLink>Login</NavLink>
+            <div className="flex font-ubuntu font-medium flex-col items-center md:flex-row md:items-center md:gap-6 md:mr-14 md:justify-end">
+              {navItems}
             </div>
           </div>
         </div>
+
+        {user && <AvatarDropdown />}
       </nav>
     </>
   );
