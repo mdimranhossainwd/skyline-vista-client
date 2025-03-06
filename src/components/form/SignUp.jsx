@@ -12,6 +12,7 @@ export const SignUp = () => {
   const navigate = useNavigate();
   const from = location.state || "/";
 
+  // Sign-Up to Email and Password Functions
   const handleSignUp = async (data) => {
     const { email, name, password, photo } = data;
     console.log({ email, name, password, photo });
