@@ -93,21 +93,6 @@ export const SignIn = () => {
 
             <div className="mt-4 text-center text-gray-500">or</div>
 
-            {/* Social Buttons */}
-            <button
-              className="w-full mt-4 flex items-center justify-center border py-2"
-              style={{
-                borderColor: "#E9E9E9",
-              }}
-            >
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/800px-Google_%22G%22_logo.svg.png"
-                alt="Google"
-                className="w-5 h-5 mr-2"
-              />
-              Continue with Google
-            </button>
-
             <div className="flex items-center justify-center my-10">
               <p className="text-sm font-medium">
                 Already Have an account ?{" "}

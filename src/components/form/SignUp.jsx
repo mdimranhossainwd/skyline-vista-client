@@ -6,7 +6,8 @@ import { useAxios } from "../../hooks/useAxios";
 
 export const SignUp = () => {
   const axios = useAxios();
-  const { createUser, user, updateUserProfile, setUser } = useAuth();
+  const { signInWithGoogle, createUser, user, updateUserProfile, setUser } =
+    useAuth();
   const { register, handleSubmit } = useForm();
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,6 +31,23 @@ export const SignUp = () => {
       navigate(from, { replace: true });
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  // Sign up to Google Account Function
+  const handleSignUpToGoogle = async (data) => {
+    try {
+      const result = await signInWithGoogle();
+      const { data } = await axios.post("/add-user", {
+        name: result?.user?.displayName,
+        email: result?.user?.email,
+        photo: result?.user?.photoURL,
+      });
+      navigate(from, { replace: true });
+      toast.success("Google Login Successfully");
+    } catch (err) {
+      console.log(err);
+      toast.error("Google Login Something Wrong");
     }
   };
 
@@ -119,6 +137,7 @@ export const SignUp = () => {
 
           {/* Social Buttons */}
           <button
+            onClick={handleSignUpToGoogle}
             className="w-full mt-4 flex items-center justify-center border py-2"
             style={{
               borderColor: "#E9E9E9",
