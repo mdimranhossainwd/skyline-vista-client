@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import { ImageCard } from "../components/shared/card/ImageCard";
 
 export const RoomDetails = () => {
   const viewRoomInfo = useLoaderData();
@@ -22,9 +23,16 @@ export const RoomDetails = () => {
     updated_at,
   } = viewRoomInfo?.data || {};
 
+  const formattedImages = images?.map((img) => ({
+    src: img,
+    thumbnail: img,
+    thumbnailWidth: 320,
+    thumbnailHeight: 212,
+  }));
+
   return (
     <div>
-      <h2>Hello World</h2>
+      <ImageCard images={images} />
     </div>
   );
 };
