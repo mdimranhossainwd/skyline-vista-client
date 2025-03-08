@@ -1,6 +1,6 @@
 export const ImageCard = ({ images }) => {
   return (
-    <div className="container mx-auto p-4">
+    <div className="">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-2 relative">
         <div className="col-span-2 row-span-2 h-72 md:h-[330px] relative group">
           <img
