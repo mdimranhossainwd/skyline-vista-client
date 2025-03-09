@@ -71,55 +71,37 @@ export const RoomDetails = () => {
       <ImageCard images={images} />
 
       <div className="my-6 grid grid-cols-12 gap-6">
-        <div className="col-span-12 md:col-span-8 borde">
+        <div className="col-span-12 md:col-span-8">
           <RoomContent host={host} amenities={amenities} />
         </div>
 
-        {/* Right Section - Booking Card (col-span-5) */}
-        {/* <div className="col-span-12 md:col-span-4 border border-gray-300 rounded-lg p-5 shadow-lg">
-          <div className="flex items-center gap-2">
-            <p className="text-xl font-bold line-through text-gray-500">$91</p>
-            <p className="text-xl font-bold text-red-600">$74</p>
-            <span className="text-gray-600">/ night</span>
-          </div>
-
-          <div className="mt-4 border p-4 rounded-lg">
-            <div className="flex justify-between">
-              <div>
-                <p className="text-sm text-gray-600">CHECK-IN</p>
-                <p className="font-medium">3/13/2025</p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-600">CHECKOUT</p>
-                <p className="font-medium">3/14/2025</p>
-              </div>
+        {/* Right Section - Booking Card (col-span-4) */}
+        <div className="col-span-12 md:col-span-4 h-auto md:h-[260px] mx-auto md:mx-0 bg-white rounded-lg shadow-lg px-6 py-4 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <p className="text-xl font-semibold">${amount}</p>
+              <span className="text-gray-600">/ night</span>
             </div>
-            <p className="mt-3 text-sm text-gray-600">GUESTS: 2 guests</p>
+
+            <div className="mt-4 border p-4 rounded-lg">
+              <div className="flex justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">CHECK-IN</p>
+                  <p className="font-medium">3/13/2025</p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-600">CHECKOUT</p>
+                  <p className="font-medium">3/14/2025</p>
+                </div>
+              </div>
+              <p className="mt-3 text-sm text-gray-600">GUESTS: 2 guests</p>
+            </div>
           </div>
 
-          <button className="w-full mt-4 bg-gradient-to-r from-pink-500 to-red-500 text-white py-2 rounded-lg font-semibold">
+          <button className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg font-semibold">
             Reserve
           </button>
-
-          <p className="text-sm text-gray-500 text-center mt-2">
-            You won’t be charged yet
-          </p>
-
-          <div className="mt-4">
-            <div className="flex justify-between text-sm">
-              <p>$74 x 1 night</p>
-              <p>$74</p>
-            </div>
-            <div className="flex justify-between text-sm">
-              <p>Cleaning fee</p>
-              <p>$26</p>
-            </div>
-            <div className="flex justify-between text-sm">
-              <p>Airbnb service fee</p>
-              <p>$15</p>
-            </div>
-          </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );
