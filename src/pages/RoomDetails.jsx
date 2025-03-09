@@ -72,7 +72,7 @@ export const RoomDetails = () => {
 
       <div className="my-6 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-8 borde">
-          <RoomContent host={host} />
+          <RoomContent host={host} amenities={amenities} />
         </div>
 
         {/* Right Section - Booking Card (col-span-5) */}

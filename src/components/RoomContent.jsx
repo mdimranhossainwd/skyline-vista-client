@@ -1,6 +1,6 @@
 import React from "react";
 
-export const RoomContent = ({ host }) => {
+export const RoomContent = ({ host, amenities }) => {
   return (
     <div>
       <h2 className="text-xl font-medium font-ubuntu">
@@ -105,6 +105,26 @@ export const RoomContent = ({ host }) => {
           <div>
             <h3 className="text-md font-medium">City view</h3>
             <p className="text-[#6A6A6A]">Soak up the view during your stay.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Room Place Offer Info */}
+
+      <div className="py-8 border-b-[1px] border-[#DDDDDD]">
+        <h3 className="text-xl font-medium">What this place offers</h3>
+        <div className="space-y-10">
+          <div className="py-4">
+            <ul className="grid grid-cols-2 gap-2 text-gray-700">
+              {amenities.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex text-md font-norml items-center gap-2"
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
