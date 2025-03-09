@@ -22,7 +22,9 @@ export const Navbar = () => {
   return (
     <>
       <nav
-        className={`relative bg-[#F3F4F6] flex py-2 ${darkMode ? "dark" : ""}`}
+        className={`relative border-b-[1px] border-[#DDDDDD] flex py-1 ${
+          darkMode ? "dark" : ""
+        }`}
       >
         <div className="container px-6 py-3 mx-auto md:flex md:justify-between md:items-center">
           {/* Logo Section */}
@@ -78,7 +80,7 @@ export const Navbar = () => {
 
           {/* Menu List */}
           <div
-            className={`absolute inset-x-0 z-20  px-6 py-4 transition-all duration-300 ease-in-out bg-[#F3F4F6]  md:mt-0 md:p-0 md:relative md:flex md:items-center md:ml-auto ${
+            className={`absolute inset-x-0 z-20  px-6 py-4 transition-all duration-300 ease-in-out bg-[#FFF] md:mt-0 md:p-0 md:relative md:flex md:items-center md:ml-auto ${
               isOpen
                 ? "translate-x-0 opacity-100"
                 : "opacity-0 -translate-x-full md:opacity-100 md:translate-x-0"
