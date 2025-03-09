@@ -1,4 +1,4 @@
-export const RoomContent = ({ host, amenities }) => {
+export const RoomContent = ({ host, amenities, location }) => {
   return (
     <div>
       <h2 className="text-xl font-medium font-ubuntu">
@@ -6,13 +6,13 @@ export const RoomContent = ({ host, amenities }) => {
       </h2>
       <p className="text-gray-600 mb-8">1 double bed · Shared bathroom</p>
 
-      <div className="mt-3 flex justify-between items-center gap-2 border border-[#DDDDDD] py-3 px-6 rounded-lg">
+      <div className="mt-3 md:flex justify-between items-center gap-2 border border-[#DDDDDD] py-3 px-6 rounded-lg">
         <img src="https://i.ibb.co.com/ksJnqw32/Screenshot-2.jpg" alt="" />
         <p className="text-md font-semibold mx-auto text-gray-600">
           One of the most loved homes on <br /> Airbnb, according to guests
         </p>
         <span className="ml-auto font-medium text-xl mr-10">4.86 </span>
-        <div>
+        <div className="">
           <h4 className="text-xl font-medium underline cursor-pointer">
             192 <br />
           </h4>

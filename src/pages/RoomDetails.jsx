@@ -52,9 +52,9 @@ export const RoomDetails = () => {
   ]);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-6 lg:px-0">
       <div className="flex items-center justify-between py-5">
-        <h2 className="text-2xl font-medium">{title}</h2>
+        <h2 className="text-lg md:text-2xl font-medium">{title}</h2>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2  cursor-pointer">
             <svg
@@ -98,9 +98,9 @@ export const RoomDetails = () => {
       <ImageCard images={images} />
 
       <div className="my-6 grid grid-cols-12 gap-6">
-        <div className="col-span-12 md:col-span-8">
-          <RoomContent host={host} amenities={amenities} />
-          <div className="w-full py-8 border my-8 border-[#DDDDDD]">
+        <div className="col-span-12 lg:col-span-8">
+          <RoomContent host={host} amenities={amenities} location={location} />
+          <div className="py-8 border my-8 border-[#DDDDDD]">
             <DateRangePicker
               showDateDisplay={false}
               rangeColors={["#F6536D"]}
@@ -118,13 +118,14 @@ export const RoomDetails = () => {
               direction="horizontal"
               ranges={state}
               staticRanges={[]}
+              className="w-full md:w-auto -ml-4"
               inputRanges={[]}
             />
           </div>
         </div>
 
         {/* Right Section - Booking Card (col-span-4) */}
-        <div className="col-span-12 md:col-span-4 h-auto md:h-[360px] mx-auto md:mx-0 bg-white rounded-lg shadow-lg px-6 py-4 flex flex-col justify-between">
+        <div className="col-span-12 w-full lg:col-span-4 h-auto md:h-[360px] mx-auto md:mx-0 bg-white rounded-lg shadow-lg px-6 py-4 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2">
               <p className="text-xl font-semibold">${totalPrice}</p>
