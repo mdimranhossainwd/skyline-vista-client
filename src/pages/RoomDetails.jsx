@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { DateRangePicker } from "react-date-range";
+import "react-date-range/dist/styles.css"; // main style file
+import "react-date-range/dist/theme/default.css";
 import { useLoaderData } from "react-router-dom";
 import { RoomContent } from "../components/RoomContent";
 import { ImageCard } from "../components/shared/card/ImageCard";
@@ -23,6 +27,17 @@ export const RoomDetails = () => {
     created_at,
     updated_at,
   } = viewRoomInfo?.data || {};
+
+  console.log("From Date Here ----------> ", availability?.available_dates[0]);
+  console.log("To Date Here ----------> ", availability?.available_dates[2]);
+
+  const [state, setState] = useState([
+    {
+      startDate: new Date(availability?.available_dates[0]),
+      endDate: new Date(availability?.available_dates[2]),
+      key: "selection",
+    },
+  ]);
 
   return (
     <div className="container mx-auto">
@@ -73,6 +88,27 @@ export const RoomDetails = () => {
       <div className="my-6 grid grid-cols-12 gap-6">
         <div className="col-span-12 md:col-span-8">
           <RoomContent host={host} amenities={amenities} />
+          <div className="w-full py-8 border my-8 border-[#DDDDDD]">
+            <DateRangePicker
+              showDateDisplay={false}
+              rangeColors={["#F6536D"]}
+              onChange={(item) => {
+                console.log(item);
+                setState([
+                  {
+                    startDate: new Date(availability?.available_dates[0]),
+                    endDate: new Date(availability?.available_dates[2]),
+                    key: "selection",
+                  },
+                ]);
+              }}
+              moveRangeOnFirstSelection={false}
+              direction="horizontal"
+              ranges={state}
+              staticRanges={[]}
+              inputRanges={[]}
+            />
+          </div>
         </div>
 
         {/* Right Section - Booking Card (col-span-4) */}
