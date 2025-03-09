@@ -1,3 +1,4 @@
+import { differenceInCalendarDays } from "date-fns";
 import { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
@@ -30,6 +31,17 @@ export const RoomDetails = () => {
 
   console.log("From Date Here ----------> ", availability?.available_dates[0]);
   console.log("To Date Here ----------> ", availability?.available_dates[2]);
+
+  // total days * per night amount
+
+  const totalPrice = parseInt(
+    differenceInCalendarDays(
+      new Date(availability?.available_dates[2]),
+      new Date(availability?.available_dates[0])
+    ) * amount
+  );
+
+  console.log(totalPrice);
 
   const [state, setState] = useState([
     {
@@ -112,31 +124,44 @@ export const RoomDetails = () => {
         </div>
 
         {/* Right Section - Booking Card (col-span-4) */}
-        <div className="col-span-12 md:col-span-4 h-auto md:h-[260px] mx-auto md:mx-0 bg-white rounded-lg shadow-lg px-6 py-4 flex flex-col justify-between">
+        <div className="col-span-12 md:col-span-4 h-auto md:h-[360px] mx-auto md:mx-0 bg-white rounded-lg shadow-lg px-6 py-4 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-2">
-              <p className="text-xl font-semibold">${amount}</p>
+              <p className="text-xl font-semibold">${totalPrice}</p>
               <span className="text-gray-600">/ night</span>
             </div>
 
-            <div className="mt-4 border p-4 rounded-lg">
+            <div className="mt-4 border border-[#DDDDDD] p-4 rounded-lg">
               <div className="flex justify-between">
                 <div>
                   <p className="text-sm text-gray-600">CHECK-IN</p>
-                  <p className="font-medium">3/13/2025</p>
+                  <p className="font-medium">
+                    {availability?.available_dates[0]}
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">CHECKOUT</p>
-                  <p className="font-medium">3/14/2025</p>
+                  <p className="font-medium">
+                    {availability?.available_dates[2]}
+                  </p>
                 </div>
               </div>
-              <p className="mt-3 text-sm text-gray-600">GUESTS: 2 guests</p>
             </div>
           </div>
 
-          <button className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg font-semibold">
+          <button className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg mt-6 text-lg font-semibold">
             Reserve
           </button>
+          <div className="my-8 border-b-[1px] pb-6 border-[#DDDDDD]">
+            <div className="flex items-center justify-between text-lg font-normal">
+              <p className="underline">Cleaning Fee </p>
+              <span>$ {pricing?.cleaning_fee}</span>
+            </div>
+            <div className="flex items-center justify-between text-lg font-normal">
+              <p className="underline">Skyvista Service Fee </p>
+              <span>$ {pricing?.service_fee}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
