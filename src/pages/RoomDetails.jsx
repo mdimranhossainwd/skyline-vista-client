@@ -9,7 +9,6 @@ import { ImageCard } from "../components/shared/card/ImageCard";
 
 export const RoomDetails = () => {
   const viewRoomInfo = useLoaderData();
-  console.log(Object.keys(viewRoomInfo?.data).join(","));
   const {
     host,
     location,
@@ -28,9 +27,6 @@ export const RoomDetails = () => {
     created_at,
     updated_at,
   } = viewRoomInfo?.data || {};
-
-  console.log("From Date Here ----------> ", availability?.available_dates[0]);
-  console.log("To Date Here ----------> ", availability?.available_dates[2]);
 
   // total days * per night amount
 
