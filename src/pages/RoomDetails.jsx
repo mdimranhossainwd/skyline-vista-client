@@ -4,10 +4,12 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import { useLoaderData } from "react-router-dom";
+import { PaymentModal } from "../components/model/PaymentModal";
 import { RoomContent } from "../components/RoomContent";
 import { ImageCard } from "../components/shared/card/ImageCard";
 
 export const RoomDetails = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const viewRoomInfo = useLoaderData();
   const {
     host,
@@ -146,16 +148,24 @@ export const RoomDetails = () => {
             </div>
           </div>
 
-          <button className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg mt-6 text-lg font-semibold">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg mt-6 hover:cursor-pointer text-lg font-semibold"
+          >
             Reserve
           </button>
+          <PaymentModal
+            viewRoomInfo={viewRoomInfo?.data}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
           <div className="my-8 border-b-[1px] pb-6 border-[#DDDDDD]">
             <div className="flex items-center justify-between text-lg font-normal">
               <p className="underline">Cleaning Fee </p>
               <span>$ {pricing?.cleaning_fee}</span>
             </div>
             <div className="flex items-center justify-between text-lg font-normal">
-              <p className="underline">Skyvista Service Fee </p>
+              <p className="underline">Skyline Service Fee </p>
               <span>$ {pricing?.service_fee}</span>
             </div>
           </div>
