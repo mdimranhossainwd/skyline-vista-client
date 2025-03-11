@@ -1,7 +1,12 @@
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { differenceInCalendarDays } from "date-fns";
 import { useAuth } from "../../hooks/useAuth";
 import { Modal } from "../../utils/Model";
-
+import { CheckoutForm } from "../form/CheckoutForm";
+const stripePromise = loadStripe(
+  import.meta.env.VITE_SKYLINE_VISTA_STRIPE_PK_TEST_KEY
+);
 export const PaymentModal = ({ isOpen, setIsOpen, viewRoomInfo }) => {
   const { user } = useAuth();
   const {
@@ -45,6 +50,10 @@ export const PaymentModal = ({ isOpen, setIsOpen, viewRoomInfo }) => {
           <span>Guest: {user?.displayName}</span> <br />
           <span>Price: ${totalPrice}</span>
         </div>
+
+        <Elements stripe={stripePromise}>
+          <CheckoutForm viewRoomInfo={viewRoomInfo} totalPrice={totalPrice} />
+        </Elements>
       </Modal>
     </>
   );
