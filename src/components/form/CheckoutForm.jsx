@@ -1,9 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 import "./CheckoutForm.css";
-export const CheckoutForm = ({ closeModal, totalPrice, viewRoomInfo }) => {
+export const CheckoutForm = ({ totalPrice, viewRoomInfo }) => {
   const stripe = useStripe();
   const { user } = useAuth();
   const elements = useElements();
@@ -17,7 +18,9 @@ export const CheckoutForm = ({ closeModal, totalPrice, viewRoomInfo }) => {
   }, [totalPrice]);
 
   const getClientSecret = async (amount) => {
-    const { data } = await axios.post("/create-payment-intent", amount);
+    const { data } = await axios.post("/create-payment-intent", {
+      amount: totalPrice,
+    });
     console.log(data);
     setClientSecret(data.clientSecret);
   };
@@ -64,12 +67,20 @@ export const CheckoutForm = ({ closeModal, totalPrice, viewRoomInfo }) => {
     } else {
       if (paymentIntent.status === "succeeded") {
         const paymentInfo = {
-          ...viewRoomInfo,
+          roomId: viewRoomInfo._id,
           email: user?.email,
           name: user?.displayName,
           transID: paymentIntent.id,
+          totalPrice,
         };
         console.log(paymentInfo);
+        try {
+          const { data } = await axios.post("/add-to-payment", paymentInfo);
+          console.log(data);
+          toast.success("Congrats ! Room Booking Successfully");
+        } catch (err) {
+          console.log(err);
+        }
       }
     }
   };
@@ -103,7 +114,6 @@ export const CheckoutForm = ({ closeModal, totalPrice, viewRoomInfo }) => {
             Pay ${totalPrice}
           </button>
           <button
-            onClick={closeModal}
             type="button"
             className="inline-flex w-full justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
           >
