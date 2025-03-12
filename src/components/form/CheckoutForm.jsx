@@ -1,8 +1,26 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../hooks/useAuth";
+import { useAxios } from "../../hooks/useAxios";
 import "./CheckoutForm.css";
-export const CheckoutForm = ({ closeModal, viewRoomInfo, totalPrice }) => {
+export const CheckoutForm = ({ closeModal, totalPrice, viewRoomInfo }) => {
   const stripe = useStripe();
+  const { user } = useAuth();
   const elements = useElements();
+  const [clientSecret, setClientSecret] = useState();
+  const axios = useAxios();
+
+  useEffect(() => {
+    if (totalPrice && totalPrice > 1) {
+      getClientSecret({ amount: totalPrice });
+    }
+  }, [totalPrice]);
+
+  const getClientSecret = async (amount) => {
+    const { data } = await axios.post("/create-payment-intent", amount);
+    console.log(data);
+    setClientSecret(data.clientSecret);
+  };
 
   const handleSubmit = async (event) => {
     // Block native form submission.
@@ -23,6 +41,10 @@ export const CheckoutForm = ({ closeModal, viewRoomInfo, totalPrice }) => {
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
+      billing_details: {
+        email: user?.email,
+        name: user?.displayName,
+      },
     });
 
     if (error) {
@@ -32,6 +54,23 @@ export const CheckoutForm = ({ closeModal, viewRoomInfo, totalPrice }) => {
       return;
     } else {
       console.log("[PaymentMethod]", paymentMethod);
+    }
+    const { error: confirmError, paymentIntent } =
+      await stripe.confirmCardPayment(clientSecret, {
+        payment_method: paymentMethod.id,
+      });
+    if (confirmError) {
+      console.log("confirmErr", confirmError);
+    } else {
+      if (paymentIntent.status === "succeeded") {
+        const paymentInfo = {
+          ...viewRoomInfo,
+          email: user?.email,
+          name: user?.displayName,
+          transID: paymentIntent.id,
+        };
+        console.log(paymentInfo);
+      }
     }
   };
 

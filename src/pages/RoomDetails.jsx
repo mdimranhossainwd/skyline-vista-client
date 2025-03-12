@@ -158,6 +158,7 @@ export const RoomDetails = () => {
             viewRoomInfo={viewRoomInfo?.data}
             isOpen={isOpen}
             setIsOpen={setIsOpen}
+            totalPrice={totalPrice}
           />
           <div className="my-8 border-b-[1px] pb-6 border-[#DDDDDD]">
             <div className="flex items-center justify-between text-lg font-normal">
