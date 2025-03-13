@@ -17,16 +17,22 @@ export const DashboardLayout = () => {
   return (
     <div className="md:flex min-h-screen bg-gray-100">
       {/* Sidebar for Desktop */}
-      <aside className="hidden md:flex w-64 bg-white p-5 ">
+      <aside className="hidden md:flex w-60 bg-white p-5 ">
         <nav>
-          <h2 className="text-xl font-bold mb-5">Dashboard</h2>
-          <div className="grid grid-cols-1 py-2 gap-2">{menuItems}</div>
+          <div>
+            <h2 className="text-2xl mt-3 font-ubuntu font-semibold text-[#E21B60] ">
+              Skyline
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 py-2 gap-2 mt-8">{menuItems}</div>
         </nav>
       </aside>
 
       {/* Mobile Navbar */}
       <div className="md:hidden w-full bg-white p-4 flex justify-between items-center border-b-[1px] border-[#DDDDDD]">
-        <h2 className="text-xl font-bold">Dashboard</h2>
+        <h2 className="text-2xl font-ubuntu font-semibold text-[#E21B60] ">
+          Skyline
+        </h2>
         <button onClick={() => setIsOpen(!isOpen)} className="p-2">
           {isOpen ? (
             <svg
