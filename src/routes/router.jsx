@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { App } from "../App";
 import { SignIn } from "../components/form/SignIn";
 import { SignUp } from "../components/form/SignUp";
+import { DashboardLayout } from "../layout/DashboardLayout";
 import Homepage from "../pages/Homepage";
 import { RoomDetails } from "../pages/RoomDetails";
 
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/api/rooms/get-room/${params.id}`),
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
   },
   {
     path: "/sign-up",
