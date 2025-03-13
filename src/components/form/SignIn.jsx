@@ -15,6 +15,11 @@ export const SignIn = () => {
   const handleSignIn = async (data) => {
     const { email, password } = data;
     try {
+      await axios.post(
+        "/login",
+        { email, password },
+        { withCredentials: true }
+      );
       await signIn(email, password);
       toast.success("Access Your Account Successfully");
       navigate(from, { replace: true });
