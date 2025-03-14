@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { AgentMenu } from "../components/menu/AgentMenu";
+import { UserMenu } from "../components/menu/UserMenu";
 import { useRole } from "../hooks/useRole";
 
 export const DashboardLayout = () => {
@@ -9,12 +11,9 @@ export const DashboardLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuItems = (
     <>
-      <NavLink>Home</NavLink>
-      <NavLink>Profile</NavLink>
-      <NavLink>Setting</NavLink>
-      <NavLink>Wishlist</NavLink>
-      <NavLink>Payment</NavLink>
-      <NavLink>Home</NavLink>
+      {role === "user" && <UserMenu />}
+      {role === "agent" && <AgentMenu />}
+      {role === "admin" && <AdminMenu />}
     </>
   );
 
