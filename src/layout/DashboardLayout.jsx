@@ -18,7 +18,7 @@ export const DashboardLayout = () => {
   );
 
   return (
-    <div className="md:flex min-h-screen bg-gray-100">
+    <div className="md:flex min-h-screen bg-gray-50">
       {/* Sidebar for Desktop */}
       <aside className="hidden md:flex w-60 bg-white p-5 ">
         <nav>
