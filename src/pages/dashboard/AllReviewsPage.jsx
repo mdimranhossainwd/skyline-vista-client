@@ -1,9 +1,9 @@
 import { Heading } from "../../components/shared/heading/Heading";
 
-export const AllUsersPage = () => {
+export const AllReviewsPage = () => {
   return (
     <>
-      <Heading heading="All User's Managed" />
+      <Heading heading="All Reviews Mangaged" />
     </>
   );
 };

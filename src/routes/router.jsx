@@ -6,6 +6,7 @@ import { SignUp } from "../components/form/SignUp";
 import { DashboardLayout } from "../layout/DashboardLayout";
 import Homepage from "../pages/Homepage";
 import { RoomDetails } from "../pages/RoomDetails";
+import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
 import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
 
 export const router = createBrowserRouter([
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "all-users",
         element: <AllUsersPage />,
+      },
+      {
+        path: "all-reviews",
+        element: <AllReviewsPage />,
       },
     ],
   },
