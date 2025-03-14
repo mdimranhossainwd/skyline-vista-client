@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { useRole } from "../hooks/useRole";
 
 export const DashboardLayout = () => {
+  const [role] = useRole();
+  console.log(role);
+
   const [isOpen, setIsOpen] = useState(false);
   const menuItems = (
     <>
