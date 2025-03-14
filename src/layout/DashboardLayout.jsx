@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { AdminMenu } from "../components/menu/AdminMenu";
 import { AgentMenu } from "../components/menu/AgentMenu";
 import { UserMenu } from "../components/menu/UserMenu";
 import { useRole } from "../hooks/useRole";
