@@ -8,6 +8,7 @@ import Homepage from "../pages/Homepage";
 import { RoomDetails } from "../pages/RoomDetails";
 import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
 import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
+import { ManagePropertiesPage } from "../pages/dashboard/ManagePropertiesPage";
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: "all-reviews",
         element: <AllReviewsPage />,
+      },
+      {
+        path: "manage-properties",
+        element: <ManagePropertiesPage />,
       },
     ],
   },
