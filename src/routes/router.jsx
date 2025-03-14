@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { App } from "../App";
+import { ReviewForm } from "../components/form/ReviewForm";
 import { SignIn } from "../components/form/SignIn";
 import { SignUp } from "../components/form/SignUp";
 import { DashboardLayout } from "../layout/DashboardLayout";
@@ -26,6 +27,12 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout />,
+    children: [
+      {
+        path: "review",
+        element: <ReviewForm />,
+      },
+    ],
   },
   {
     path: "/sign-up",

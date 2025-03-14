@@ -23,7 +23,7 @@ export const UserMenu = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
-        to="profile"
+        to="review"
       >
         My Reviews
       </NavLink>
