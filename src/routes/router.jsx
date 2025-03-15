@@ -10,6 +10,7 @@ import { AddPropertiesPage } from "../pages/dashboard/AddPropertiesPage";
 import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
 import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
 import { ManagePropertiesPage } from "../pages/dashboard/ManagePropertiesPage";
+import { MyOwnPropertyPage } from "../pages/dashboard/MyOwnPropertyPage";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "add-properties",
         element: <AddPropertiesPage />,
+      },
+      {
+        path: "my-own-properties",
+        element: <MyOwnPropertyPage />,
       },
 
       // ADMIN ROUTES HERE
