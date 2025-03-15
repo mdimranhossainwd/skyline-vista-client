@@ -6,6 +6,7 @@ import { SignUp } from "../components/form/SignUp";
 import { DashboardLayout } from "../layout/DashboardLayout";
 import Homepage from "../pages/Homepage";
 import { RoomDetails } from "../pages/RoomDetails";
+import { AddPropertiesPage } from "../pages/dashboard/AddPropertiesPage";
 import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
 import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
 import { ManagePropertiesPage } from "../pages/dashboard/ManagePropertiesPage";
@@ -34,6 +35,12 @@ export const router = createBrowserRouter([
       {
         path: "review",
         element: <ReviewForm />,
+      },
+
+      // AGENT ROUTES HERE
+      {
+        path: "add-properties",
+        element: <AddPropertiesPage />,
       },
 
       // ADMIN ROUTES HERE
