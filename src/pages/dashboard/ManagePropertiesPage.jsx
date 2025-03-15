@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { PropertyTableCard } from "../../components/shared/card/PropertyTableCard";
 import { Heading } from "../../components/shared/heading/Heading";
 import { useAxios } from "../../hooks/useAxios";
 
@@ -21,7 +22,10 @@ export const ManagePropertiesPage = () => {
 
   return (
     <>
-      <Heading heading="All Properties Managed" />
+      <div className="w-full mx-auto">
+        <Heading heading="All Properties Managed" />
+        <PropertyTableCard properties={getPropertiesData} />
+      </div>
     </>
   );
 };
