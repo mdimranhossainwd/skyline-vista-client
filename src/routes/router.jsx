@@ -11,6 +11,7 @@ import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
 import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
 import { ManagePropertiesPage } from "../pages/dashboard/ManagePropertiesPage";
 import { MyOwnPropertyPage } from "../pages/dashboard/MyOwnPropertyPage";
+import { SoldPropertyPage } from "../pages/dashboard/SoldPropertyPage";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "my-own-properties",
         element: <MyOwnPropertyPage />,
+      },
+      {
+        path: "my-sold-porperties",
+        element: <SoldPropertyPage />,
       },
 
       // ADMIN ROUTES HERE
