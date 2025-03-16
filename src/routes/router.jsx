@@ -4,8 +4,6 @@ import { ReviewForm } from "../components/form/ReviewForm";
 import { SignIn } from "../components/form/SignIn";
 import { SignUp } from "../components/form/SignUp";
 import { DashboardLayout } from "../layout/DashboardLayout";
-import Homepage from "../pages/Homepage";
-import { RoomDetails } from "../pages/RoomDetails";
 import { AddPropertiesPage } from "../pages/dashboard/AddPropertiesPage";
 import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
 import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
@@ -13,11 +11,15 @@ import { ManagePropertiesPage } from "../pages/dashboard/ManagePropertiesPage";
 import { MyOwnPropertyPage } from "../pages/dashboard/MyOwnPropertyPage";
 import { RequestPropertyPage } from "../pages/dashboard/RequestPropertyPage";
 import { SoldPropertyPage } from "../pages/dashboard/SoldPropertyPage";
+import Homepage from "../pages/Homepage";
+import { NotFoundPage } from "../pages/NotFoundPage";
+import { RoomDetails } from "../pages/RoomDetails";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         index: true,
