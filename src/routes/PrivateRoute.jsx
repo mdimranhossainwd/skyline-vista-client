@@ -1,4 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
+import { GridLoader } from "react-spinners";
 
 import useAuth from "../hooks/useAuth";
 export const PrivateRoute = ({ children }) => {
