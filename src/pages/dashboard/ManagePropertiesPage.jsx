@@ -5,7 +5,6 @@ import { useAxios } from "../../hooks/useAxios";
 
 export const ManagePropertiesPage = () => {
   const axios = useAxios();
-
   //   Load all All-Properties Data
   const getData = async () => {
     const { data } = await axios.get("/get-rooms");

@@ -1,4 +1,7 @@
+import { useRole } from "../../../hooks/useRole";
+
 export const PropertyTableCard = ({ properties }) => {
+  const [role] = useRole();
   console.log(properties);
 
   return (
@@ -15,10 +18,10 @@ export const PropertyTableCard = ({ properties }) => {
         </div>
 
         {/* Table Body */}
-        {properties?.map((property) => (
+        {properties?.map((property, index) => (
           <div
             key={property._id}
-            className="grid grid-cols-6 text-center border-b-[1px] border-[#DDD] hover:bg-gray-100 px-4 py-2"
+            className="grid grid-cols-6 items-center text-center border-b-[1px] border-[#DDD] hover:bg-gray-100 px-4 py-2"
           >
             <div>
               {property.title.length > 20
@@ -31,7 +34,48 @@ export const PropertyTableCard = ({ properties }) => {
             <div>{property.room_details.property_type}</div>
             <div>${property.pricing.price_per_night} / night</div>
             <div>{property.status}</div>
-            <div className="flex gap-2"></div>
+            <div className="flex gap-2 justify-center items-center">
+              {role === "agent" && (
+                <div className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-pencil"
+                  >
+                    <path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
+                    <path d="m15 5 4 4" />
+                  </svg>
+                </div>
+              )}
+
+              <div className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-trash-2"
+                >
+                  <path d="M3 6h18" />
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                  <line x1="10" x2="10" y1="11" y2="17" />
+                  <line x1="14" x2="14" y1="11" y2="17" />
+                </svg>
+              </div>
+            </div>
           </div>
         ))}
       </div>
