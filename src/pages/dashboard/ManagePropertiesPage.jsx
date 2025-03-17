@@ -23,7 +23,7 @@ export const ManagePropertiesPage = () => {
     <>
       <div className="w-full mx-auto">
         <Heading heading="All Properties Managed" />
-        <PropertyTableCard properties={getPropertiesData} />
+        <PropertyTableCard properties={getPropertiesData} refetch={refetch} />
       </div>
     </>
   );

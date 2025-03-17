@@ -1,8 +1,26 @@
+import toast from "react-hot-toast";
+import { useAxios } from "../../../hooks/useAxios";
 import { useRole } from "../../../hooks/useRole";
 
-export const PropertyTableCard = ({ properties }) => {
+export const PropertyTableCard = ({ properties, refetch }) => {
   const [role] = useRole();
-  console.log(properties);
+  const axios = useAxios();
+
+  // Deleted Properties Only Admin / Agent (Admin all Properties deleted || Agent will be delted Only his own Properties)
+  const handleDeleteProperty = async (id) => {
+    const findByIdProperty = await properties.find((item) => item?._id === id);
+    console.log(findByIdProperty);
+
+    try {
+      const { data } = await axios.delete(
+        `/delete-room/${findByIdProperty?._id}`
+      );
+      refetch();
+      toast.success("Deleted Property Successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="w-full overflow-x-auto">
@@ -55,7 +73,10 @@ export const PropertyTableCard = ({ properties }) => {
                 </div>
               )}
 
-              <div className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
+              <div
+                onClick={() => handleDeleteProperty(property?._id)}
+                className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"

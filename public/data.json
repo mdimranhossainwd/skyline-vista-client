@@ -1,0 +1,61 @@
+{
+  "host": {
+    "host_id": "H009",
+    "name": "Liam Anderson",
+    "profile_image": "https://www.shutterstock.com/image-photo/happy-african-american-young-businessman-600nw-1470743381.jpg",
+    "is_superhost": true,
+    "response_time": "within 30 minutes",
+    "response_rate": 99,
+    "total_listings": 5,
+    "verified": true
+  },
+  "location": {
+    "address": "123 Ocean Drive",
+    "latitude": 25.7617,
+    "longitude": -80.1918,
+    "city": "Miami",
+    "state": "FL",
+    "country": "USA",
+    "zip_code": "33139",
+    "neighborhood": "Beachfront"
+  },
+  "room_details": {
+    "property_type": "Villa",
+    "room_type": "Entire Place",
+    "accommodates": 8,
+    "bedrooms": 4,
+    "beds": 5,
+    "bathrooms": 4
+  },
+  "pricing": {
+    "price_per_night": 500,
+    "currency": "USD",
+    "cleaning_fee": 60,
+    "service_fee": 30,
+    "security_deposit": 300,
+    "weekly_discount": 10,
+    "monthly_discount": 25
+  },
+  "availability": {
+    "minimum_nights": 3,
+    "maximum_nights": 15,
+    "available_dates": ["2025-03-15", "2025-03-22", "2025-03-29"]
+  },
+  "_id": "67c5d5d69192e5b68df24afd",
+  "title": "Beachfront Villa with Private Pool",
+  "description": "A luxurious beachfront villa with a private infinity pool and direct beach access.",
+  "amenities": ["WiFi", "Private Pool", "Beach Access", "BBQ Grill"],
+  "images": [
+    "https://i.ibb.co.com/vxr7PRTr/Dalston-11.jpg",
+    "https://i.ibb.co.com/4RSd44ph/Dalston-12.jpg",
+    "https://i.ibb.co.com/ds63Cf6W/Dalston-13.jpg",
+    "https://i.ibb.co.com/VW2w4HXb/Dalston-14.jpg",
+    "https://i.ibb.co.com/23V79rQN/Dalston-15.jpg"
+  ],
+  "amount": 500,
+  "safety_features": ["Smoke Alarm", "Security System", "Fire Extinguisher"],
+  "room_status": "available",
+  "status": "pending",
+  "created_at": "2025-03-09T15:00:00.000Z",
+  "updated_at": "2025-03-09T15:00:00.000Z"
+}
