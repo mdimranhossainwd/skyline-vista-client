@@ -73,7 +73,7 @@ export const AddPropertyForm = () => {
     };
 
     try {
-      await axios.post("/add-room", { finalData });
+      await axios.post("/add-room", finalData);
       toast.success("Properties Added Successfully");
       reset();
     } catch (error) {
@@ -113,7 +113,7 @@ export const AddPropertyForm = () => {
 
       {/* --------- HOST ----------- */}
       <h3 className="text-lg font-semibold mt-4 mb-1">Host Details:</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <label className="block mb-2">
           Host Name:
           <input
@@ -133,7 +133,7 @@ export const AddPropertyForm = () => {
             defaultValue={user?.photoURL}
           />
         </label>
-      </div>
+      </div> */}
 
       <label className=" mb-2 flex justify-between items-center">
         <span className="mr-2">Is Superhost:</span>
