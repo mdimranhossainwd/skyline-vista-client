@@ -121,9 +121,16 @@ export const AddPropertyForm = () => {
         </label>
       </div>
 
-      <label className="block mb-2">
-        Is Superhost:
-        <input type="checkbox" {...register("is_superhost")} className="ml-2" />
+      <label className=" mb-2 flex justify-between items-center">
+        <span className="mr-2">Is Superhost:</span>
+        <div className="relative w-12 h-6 bg-gray-300 rounded-full transition-all">
+          <input
+            type="checkbox"
+            {...register("is_superhost")}
+            className="sr-only peer"
+          />
+          <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow-md transition-all peer-checked:translate-x-6 peer-checked:bg-pink-300"></div>
+        </div>
       </label>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -421,9 +428,9 @@ export const AddPropertyForm = () => {
 
       <button
         type="submit"
-        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-2 rounded-lg mt-6 hover:cursor-pointer text-md font-medium"
       >
-        Submit
+        Add Property
       </button>
     </form>
   );
