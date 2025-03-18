@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { useAxios } from "../../hooks/useAxios";
 
 export const AddPropertyForm = () => {
+  const axios = useAxios();
   const {
     register,
     handleSubmit,
@@ -8,7 +11,7 @@ export const AddPropertyForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const finalData = {
       title: data.title,
       description: data.description,
@@ -60,22 +63,27 @@ export const AddPropertyForm = () => {
         .split(",")
         .map((item) => item.trim()),
       images: data.images.split(",").map((img) => img.trim()),
-      amount: parseInt(data.price_per_night),
+      amount: data.amount,
       room_status: "available",
       status: "approved",
     };
 
+    try {
+      await axios.post("/add-room", { finalData });
+      toast.success("Properties Added Successfully");
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
+
     console.log(finalData);
-    reset();
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className=" p-6 bg-white shadow-md rounded-lg"
+      className=" p-6 bg-white border border-[#ddd] rounded-md"
     >
-      <h2 className="text-xl font-bold mb-4">Create a Listing</h2>
-
       {/* Title & Description */}
       <label className="block mb-2">
         Title:
@@ -362,6 +370,18 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("monthly_discount")}
+            className="w-full p-2 border border-[#DDD] rounded"
+          />
+        </label>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <label className="block mb-2">
+          Amount:
+          <input
+            type="number"
+            {...register("amount", {
+              required: "Price Amount is required",
+            })}
             className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
