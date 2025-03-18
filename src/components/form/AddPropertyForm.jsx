@@ -81,7 +81,7 @@ export const AddPropertyForm = () => {
         Title:
         <input
           {...register("title", { required: "Title is required" })}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border border-[#DDD] rounded"
         />
         {errors.title && (
           <span className="text-red-500">{errors.title.message}</span>
@@ -92,7 +92,7 @@ export const AddPropertyForm = () => {
         Description:
         <textarea
           {...register("description", { required: "Description is required" })}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border border-[#DDD] rounded"
         ></textarea>
         {errors.description && (
           <span className="text-red-500">{errors.description.message}</span>
@@ -106,7 +106,7 @@ export const AddPropertyForm = () => {
           Host Name:
           <input
             {...register("host_name", { required: "Host name is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -116,7 +116,7 @@ export const AddPropertyForm = () => {
             {...register("profile_image", {
               required: "Profile Image URL is required",
             })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -140,7 +140,7 @@ export const AddPropertyForm = () => {
             {...register("response_time", {
               required: "Response time is required",
             })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -151,7 +151,7 @@ export const AddPropertyForm = () => {
             {...register("response_rate", {
               required: "Response rate is required",
             })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -162,7 +162,7 @@ export const AddPropertyForm = () => {
             {...register("total_listings", {
               required: "Total listings is required",
             })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -174,7 +174,7 @@ export const AddPropertyForm = () => {
           Address:
           <input
             {...register("address", { required: "Address is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -182,7 +182,7 @@ export const AddPropertyForm = () => {
           City:
           <input
             {...register("city", { required: "City is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -190,7 +190,7 @@ export const AddPropertyForm = () => {
           State:
           <input
             {...register("state", { required: "State is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -200,7 +200,7 @@ export const AddPropertyForm = () => {
           Country:
           <input
             {...register("country", { required: "Country is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -210,7 +210,7 @@ export const AddPropertyForm = () => {
             type="number"
             step="any"
             {...register("latitude", { required: "Latitude is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -220,7 +220,7 @@ export const AddPropertyForm = () => {
             type="number"
             step="any"
             {...register("longitude", { required: "Longitude is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -228,7 +228,7 @@ export const AddPropertyForm = () => {
           Zip Code:
           <input
             {...register("zip_code", { required: "Zip Code is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -238,7 +238,7 @@ export const AddPropertyForm = () => {
           Neighborhood:
           <input
             {...register("neighborhood")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -252,7 +252,7 @@ export const AddPropertyForm = () => {
             {...register("property_type", {
               required: "Property Type is required",
             })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -260,7 +260,7 @@ export const AddPropertyForm = () => {
           Room Type:
           <input
             {...register("room_type", { required: "Room Type is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -272,7 +272,7 @@ export const AddPropertyForm = () => {
           {...register("accommodates", {
             required: "Accommodates is required",
           })}
-          className="w-full p-2 border rounded"
+          className="w-full p-2 border border-[#DDD] rounded"
         />
       </label>
 
@@ -282,7 +282,7 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("bedrooms", { required: "Bedrooms is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -291,7 +291,7 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("beds", { required: "Beds is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -300,7 +300,7 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("bathrooms", { required: "Bathrooms is required" })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -315,7 +315,7 @@ export const AddPropertyForm = () => {
             {...register("price_per_night", {
               required: "Price per night is required",
             })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -324,7 +324,7 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("cleaning_fee")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -333,7 +333,7 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("service_fee")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -344,7 +344,7 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("security_deposit")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -353,7 +353,7 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("weekly_discount")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -362,7 +362,7 @@ export const AddPropertyForm = () => {
           <input
             type="number"
             {...register("monthly_discount")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -377,7 +377,7 @@ export const AddPropertyForm = () => {
             {...register("minimum_nights", {
               required: "Minimum Nights is required",
             })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -388,7 +388,7 @@ export const AddPropertyForm = () => {
             {...register("maximum_nights", {
               required: "Maximum Nights is required",
             })}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -396,7 +396,7 @@ export const AddPropertyForm = () => {
           Available Dates (comma separated):
           <input
             {...register("available_dates")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
@@ -408,7 +408,7 @@ export const AddPropertyForm = () => {
           Amenities (comma separated):
           <input
             {...register("amenities")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
 
@@ -416,14 +416,17 @@ export const AddPropertyForm = () => {
           Safety Features (comma separated):
           <input
             {...register("safety_features")}
-            className="w-full p-2 border rounded"
+            className="w-full p-2 border border-[#DDD] rounded"
           />
         </label>
       </div>
 
       <label className="block mb-2">
         Images URLs (comma separated):
-        <input {...register("images")} className="w-full p-2 border rounded" />
+        <input
+          {...register("images")}
+          className="w-full p-2 border border-[#DDD] rounded"
+        />
       </label>
 
       <button
