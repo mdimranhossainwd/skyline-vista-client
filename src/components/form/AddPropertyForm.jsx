@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 
 export const AddPropertyForm = () => {
   const axios = useAxios();
+  const { user } = useAuth();
   const {
     register,
     handleSubmit,
@@ -11,13 +13,14 @@ export const AddPropertyForm = () => {
     formState: { errors },
   } = useForm();
 
+  // Agent Add Properties Functions
   const onSubmit = async (data) => {
     const finalData = {
       title: data.title,
       description: data.description,
       host: {
-        name: data.host_name,
-        profile_image: data.profile_image,
+        name: user?.displayName,
+        profile_image: user?.photoURL,
         is_superhost: data.is_superhost || false,
         response_time: data.response_time,
         response_rate: parseInt(data.response_rate),
@@ -66,6 +69,7 @@ export const AddPropertyForm = () => {
       amount: data.amount,
       room_status: "available",
       status: "approved",
+      email: user?.email,
     };
 
     try {
@@ -114,7 +118,8 @@ export const AddPropertyForm = () => {
           Host Name:
           <input
             {...register("host_name", { required: "Host name is required" })}
-            className="w-full p-2 border border-[#DDD] rounded"
+            className="w-full p-2 border border-[#DDD] rounded cursor-not-allowed"
+            defaultValue={user?.displayName}
           />
         </label>
 
@@ -125,6 +130,7 @@ export const AddPropertyForm = () => {
               required: "Profile Image URL is required",
             })}
             className="w-full p-2 border border-[#DDD] rounded"
+            defaultValue={user?.photoURL}
           />
         </label>
       </div>
