@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { ReviewCard } from "../../components/shared/card/ReviewCard";
 import { Heading } from "../../components/shared/heading/Heading";
 import { useAxios } from "../../hooks/useAxios";
 
@@ -21,7 +22,12 @@ export const AllReviewsPage = () => {
 
   return (
     <>
-      <Heading heading="All Reviews Mangaged" />
+      <div className="w-full mx-auto">
+        <Heading heading="All Reviews Mangaged" />
+        <div className="grid grid-cols-2 gap-2">
+          <ReviewCard review={getReviewData} refetch={refetch} />
+        </div>
+      </div>
     </>
   );
 };
