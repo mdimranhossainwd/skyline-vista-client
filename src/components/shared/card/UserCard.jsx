@@ -106,7 +106,12 @@ export const UserCard = ({ user, refetch }) => {
             </div>
           </div>
         ))}
-        <RoleModel isOpen={isOpen} setIsOpen={setIsOpen} user={currentUser} />
+        <RoleModel
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          user={currentUser}
+          refetch={refetch}
+        />
       </div>
     </div>
   );
