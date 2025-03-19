@@ -1,6 +1,21 @@
 import { Trash2 } from "lucide-react";
+import toast from "react-hot-toast";
+import { useAxios } from "../../../hooks/useAxios";
 
-export const ReviewCard = ({ review }) => {
+export const ReviewCard = ({ review, refetch }) => {
+  const axios = useAxios();
+
+  //  Delete Review Handler Function
+  const handleReviewDelete = async (id) => {
+    try {
+      await axios.delete(`/delete-review/${id}`);
+      refetch();
+      toast.success("Review deleted successfully!");
+    } catch (error) {
+      console.log("Error deleting review:", error);
+    }
+  };
+
   return (
     <>
       {review?.map((review) => (
@@ -54,11 +69,10 @@ export const ReviewCard = ({ review }) => {
             </span>
             {/* Delete Button */}
             <button
-              // onClick={() => onDelete(review._id)}
+              onClick={() => handleReviewDelete(review._id)}
               className="flex items-center gap-1 text-red-400 hover:text-red-500 transition"
             >
               <Trash2 size={18} />
-              <span>Delete</span>
             </button>
           </div>
         </div>
