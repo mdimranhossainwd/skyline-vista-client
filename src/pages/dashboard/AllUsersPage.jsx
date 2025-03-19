@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { UserCard } from "../../components/shared/card/UserCard";
 import { Heading } from "../../components/shared/heading/Heading";
 import { useAxios } from "../../hooks/useAxios";
 
@@ -21,7 +22,10 @@ export const AllUsersPage = () => {
 
   return (
     <>
-      <Heading heading="All User's Managed" />
+      <div>
+        <Heading heading="All User's Managed" />
+        <UserCard user={getAllUserData} refetch={refetch} />
+      </div>
     </>
   );
 };
