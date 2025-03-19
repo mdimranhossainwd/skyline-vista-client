@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { PropertyTableCard } from "../../components/shared/card/PropertyTableCard";
 import { Heading } from "../../components/shared/heading/Heading";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
@@ -23,7 +24,10 @@ export const MyOwnPropertyPage = () => {
 
   return (
     <>
-      <Heading heading="Your Own Property Here." />
+      <div className="w-full mx-auto">
+        <Heading heading="Your Own Property Here." />
+        <PropertyTableCard properties={getAgentOwnProperty} refetch={refetch} />
+      </div>
     </>
   );
 };

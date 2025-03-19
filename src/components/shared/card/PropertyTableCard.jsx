@@ -26,11 +26,16 @@ export const PropertyTableCard = ({ properties, refetch }) => {
     <div className="w-full overflow-x-auto">
       <div className="w-full min-w-[1000px] border-collapse text-left">
         {/* Table Header */}
-        <div className="bg-[#444] text-white grid grid-cols-6 px-4 py-3 text-center font-bold">
+        <div
+          className={`bg-[#444] text-white grid ${
+            role === "agent" ? "grid-cols-7" : "grid-cols-6"
+          } px-4 py-3 text-center font-bold`}
+        >
           <div>Title</div>
           <div>Location</div>
           <div>Type</div>
           <div>Price</div>
+          {role === "agent" && <div>Email</div>}
           <div>Status</div>
           <div>Actions</div>
         </div>
@@ -39,7 +44,9 @@ export const PropertyTableCard = ({ properties, refetch }) => {
         {properties?.map((property, index) => (
           <div
             key={property._id}
-            className="grid grid-cols-6 items-center text-center border-b-[1px] border-[#DDD] hover:bg-gray-100 px-4 py-2"
+            className={`grid ${
+              role === "agent" ? "grid-cols-7" : "grid-cols-6"
+            } items-center text-center border-b-[1px] border-[#DDD] hover:bg-gray-100 px-4 py-2`}
           >
             <div>
               {property.title.length > 20
@@ -51,7 +58,20 @@ export const PropertyTableCard = ({ properties, refetch }) => {
             </div>
             <div>{property.room_details.property_type}</div>
             <div>${property.pricing.price_per_night} / night</div>
-            <div>{property.status}</div>
+            {role === "agent" && <div>{property.email}</div>}
+            <div>
+              <span
+                className={`px-2 py-1 rounded text-xs ${
+                  property.status === "approved"
+                    ? "bg-green-100 text-green-600"
+                    : property.status === "pending"
+                    ? "bg-yellow-100 text-yellow-600"
+                    : "bg-red-100 text-red-600"
+                }`}
+              >
+                {property.status}
+              </span>
+            </div>
             <div className="flex gap-2 justify-center items-center">
               {role === "agent" && (
                 <div className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
