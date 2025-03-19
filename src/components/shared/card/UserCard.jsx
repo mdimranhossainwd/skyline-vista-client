@@ -1,4 +1,21 @@
+import toast from "react-hot-toast";
+import { useAxios } from "../../../hooks/useAxios";
+
 export const UserCard = ({ user, refetch }) => {
+  const axios = useAxios();
+
+  // Deleted USER Only Admin
+  const handdleDeleteUser = async (id) => {
+    console.log(id);
+    try {
+      await axios.delete(`/delete-user/${id}`);
+      refetch();
+      toast.success("Deleted User Successfully");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full overflow-x-auto">
       <div className="w-full min-w-[1000px] border-collapse text-left">
@@ -48,7 +65,10 @@ export const UserCard = ({ user, refetch }) => {
                   <path d="m15 5 4 4" />
                 </svg>
               </button>
-              <button className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
+              <button
+                onClick={() => handdleDeleteUser(user?._id)}
+                className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
