@@ -1,6 +1,14 @@
+import { useState } from "react";
+import { UserInfoModel } from "../../model/UserInfoModel";
+
 export const ProfileCard = ({ user, refetch }) => {
   const { _id, name, email, role, photo, createdAt, updatedAt, __v } =
     user?.user || {};
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleUpdateUserInfo = async (id) => {
+    console.log(id);
+  };
 
   return (
     <>
@@ -12,7 +20,10 @@ export const ProfileCard = ({ user, refetch }) => {
             src="https://images.pexels.com/photos/13620071/pexels-photo-13620071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="cover"
           />
-          <button className="absolute flex items-center gap-1 top-3 right-3 px-4 py-1 text-sm bg-white rounded-full shadow font-medium text-gray-600 hover:bg-gray-100">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="absolute flex items-center gap-1 top-3 right-3 px-4 py-1 text-sm bg-white rounded-full shadow font-medium text-gray-600 hover:bg-gray-100"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -103,6 +114,12 @@ export const ProfileCard = ({ user, refetch }) => {
             </div>
           </div>
         </div>
+        <UserInfoModel
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          user={user?.user}
+          refetch={refetch}
+        />
       </div>
     </>
   );
