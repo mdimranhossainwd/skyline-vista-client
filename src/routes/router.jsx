@@ -10,6 +10,7 @@ import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
 import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
 import { ManagePropertiesPage } from "../pages/dashboard/ManagePropertiesPage";
 import { MyOwnPropertyPage } from "../pages/dashboard/MyOwnPropertyPage";
+import { ProfilePage } from "../pages/dashboard/ProfilePage";
 import { RequestPropertyPage } from "../pages/dashboard/RequestPropertyPage";
 import { SoldPropertyPage } from "../pages/dashboard/SoldPropertyPage";
 import Homepage from "../pages/Homepage";
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "review",
         element: <ReviewForm />,
+      },
+      {
+        path: "my-profile",
+        element: <ProfilePage />,
       },
 
       // AGENT ROUTES HERE
