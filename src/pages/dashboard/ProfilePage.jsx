@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { ProfileCard } from "../../components/shared/card/ProfileCard";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 
@@ -22,7 +23,7 @@ export const ProfilePage = () => {
   return (
     <>
       <div>
-        <h2>HEllow</h2>
+        <ProfileCard user={getUserInfo} refetch={refetch} />
       </div>
     </>
   );
