@@ -17,7 +17,7 @@ export const ReviewForm = () => {
   // User's Their Vablueable Review Functions Here:-
   const onSubmit = async (formData) => {
     try {
-      await axios.post("/add-review", { formData });
+      await axios.post("/add-review", formData);
       toast.success("Thank Yor for you Review");
       reset();
     } catch (error) {
@@ -79,7 +79,7 @@ export const ReviewForm = () => {
         <label className="block mb-2">
           Profile Image URL:
           <input
-            {...register("profile_image", { required: true })}
+            {...register("profile_image")}
             className="w-full p-2 border disabled cursor-not-allowed border-[#ddd] rounded"
             defaultValue={user?.photoURL}
           />

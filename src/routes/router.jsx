@@ -3,6 +3,7 @@ import { App } from "../App";
 import { ReviewForm } from "../components/form/ReviewForm";
 import { SignIn } from "../components/form/SignIn";
 import { SignUp } from "../components/form/SignUp";
+import { UpdatePropertyForm } from "../components/form/UpdatePropertyForm";
 import { DashboardLayout } from "../layout/DashboardLayout";
 import { AddPropertiesPage } from "../pages/dashboard/AddPropertiesPage";
 import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
@@ -58,6 +59,12 @@ export const router = createBrowserRouter([
       {
         path: "brought-property-request",
         element: <RequestPropertyPage />,
+      },
+      {
+        path: "update-properties/:id",
+        element: <UpdatePropertyForm />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/api/rooms/get-room/${params.id}`),
       },
 
       // ADMIN ROUTES HERE
