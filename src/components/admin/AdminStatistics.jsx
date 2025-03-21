@@ -150,7 +150,7 @@ export const AdminStatistics = () => {
           {/* Total Sales Graph */}
           <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 border border-[#ddd] overflow-hidden xl:col-span-2">
             {/* Render Chart Here */}
-            <SalesChart />
+            <SalesChart data={getStaticsData?.chartData} />
           </div>
           {/* Calender */}
           <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 border border-[#ddd] overflow-hidden">

@@ -1,19 +1,13 @@
 import Chart from "react-google-charts";
 
-const data = [
-  ["Year", "Sales", "Expenses"],
-  ["2004", 1000, 400],
-  ["2005", 1170, 460],
-  ["2006", 660, 1120],
-  ["2007", 1030, 540],
-];
 const options = {
-  title: "Earnings Performance",
+  title: "Sales Over Time",
   curveType: "function",
   legend: { position: "bottom" },
+  series: [{ color: "#F43F5E" }],
 };
 
-export const SalesChart = () => {
+export const SalesChart = ({ data }) => {
   return (
     <>
       <Chart
