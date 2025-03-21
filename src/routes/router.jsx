@@ -8,6 +8,7 @@ import { DashboardLayout } from "../layout/DashboardLayout";
 import { AddPropertiesPage } from "../pages/dashboard/AddPropertiesPage";
 import { AllReviewsPage } from "../pages/dashboard/AllReviewsPage";
 import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
+import { DashboardOverviewPage } from "../pages/dashboard/DashboardOverviewPage";
 import { ManagePropertiesPage } from "../pages/dashboard/ManagePropertiesPage";
 import { MyOwnPropertyPage } from "../pages/dashboard/MyOwnPropertyPage";
 import { ProfilePage } from "../pages/dashboard/ProfilePage";
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "my-profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "satisfy",
+        element: <DashboardOverviewPage />,
       },
 
       // AGENT ROUTES HERE

@@ -75,8 +75,7 @@ export const CheckoutForm = ({ totalPrice, viewRoomInfo }) => {
         };
         console.log(paymentInfo);
         try {
-          const { data } = await axios.post("/add-to-payment", paymentInfo);
-          console.log(data);
+          await axios.post("/add-to-payment", paymentInfo);
           toast.success("Congrats ! Room Booking Successfully");
         } catch (err) {
           console.log(err);
