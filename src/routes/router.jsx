@@ -41,6 +41,10 @@ export const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       {
+        index: true,
+        element: <DashboardOverviewPage />,
+      },
+      {
         path: "review",
         element: <ReviewForm />,
       },
@@ -48,11 +52,6 @@ export const router = createBrowserRouter([
         path: "my-profile",
         element: <ProfilePage />,
       },
-      {
-        path: "satisfy",
-        element: <DashboardOverviewPage />,
-      },
-
       // AGENT ROUTES HERE
       {
         path: "add-properties",

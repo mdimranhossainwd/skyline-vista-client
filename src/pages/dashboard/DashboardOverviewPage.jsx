@@ -1,4 +1,4 @@
-import { AdminStatistics } from "../../components/admin/AdminStatistics";
+import { AdminStatistics } from "../../components/satisfy/AdminStatistics";
 
 export const DashboardOverviewPage = () => {
   return (

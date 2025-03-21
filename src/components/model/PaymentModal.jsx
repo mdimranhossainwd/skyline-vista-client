@@ -52,7 +52,12 @@ export const PaymentModal = ({ isOpen, setIsOpen, viewRoomInfo }) => {
         </div>
 
         <Elements stripe={stripePromise}>
-          <CheckoutForm viewRoomInfo={viewRoomInfo} totalPrice={totalPrice} />
+          <CheckoutForm
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            viewRoomInfo={viewRoomInfo}
+            totalPrice={totalPrice}
+          />
         </Elements>
       </Modal>
     </>
