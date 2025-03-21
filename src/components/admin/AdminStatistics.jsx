@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
+import { Calendar } from "react-date-range";
 import { useAxios } from "../../hooks/useAxios";
+import { SalesChart } from "../shared/SalesChart";
 
 export const AdminStatistics = () => {
   const axios = useAxios();
@@ -47,7 +49,7 @@ export const AdminStatistics = () => {
                 Total Sales
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">
-                ${getStaticsData?.totalSales}
+                ${getStaticsData?.totalPrice}
               </h4>
             </div>
           </div>
@@ -142,6 +144,17 @@ export const AdminStatistics = () => {
                 {getStaticsData?.totalRooms}
               </h4>
             </div>
+          </div>
+        </div>
+        <div className="mb-4 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
+          {/* Total Sales Graph */}
+          <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 border border-[#ddd] overflow-hidden xl:col-span-2">
+            {/* Render Chart Here */}
+            <SalesChart />
+          </div>
+          {/* Calender */}
+          <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 border border-[#ddd] overflow-hidden">
+            <Calendar color="#F43F5E" />
           </div>
         </div>
       </div>
