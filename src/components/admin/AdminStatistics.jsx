@@ -47,7 +47,7 @@ export const AdminStatistics = () => {
                 Total Sales
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">
-                $200,000
+                ${getStaticsData?.totalSales}
               </h4>
             </div>
           </div>
@@ -79,7 +79,7 @@ export const AdminStatistics = () => {
                 Total User
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">
-                10
+                {getStaticsData?.totalUsers}
               </h4>
             </div>
           </div>
@@ -109,7 +109,7 @@ export const AdminStatistics = () => {
                 Total Bookings
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">
-                20
+                {getStaticsData?.totalBookings}
               </h4>
             </div>
           </div>
@@ -139,7 +139,7 @@ export const AdminStatistics = () => {
                 Total Rooms
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">
-                500
+                {getStaticsData?.totalRooms}
               </h4>
             </div>
           </div>
