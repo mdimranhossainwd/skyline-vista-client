@@ -1,8 +1,25 @@
+import { useQuery } from "@tanstack/react-query";
+import { useAxios } from "../../hooks/useAxios";
+
 export const AdminStatistics = () => {
+  const axios = useAxios();
+
+  // Load statistics data from the server
+  const getData = async () => {
+    const { data } = await axios.get("/get-statics");
+    return data;
+  };
+
+  //   Fetch Data using to TanSt Query
+  const { data: getStaticsData, refetch } = useQuery({
+    queryKey: ["getStaticsData"],
+    queryFn: getData,
+  });
+  console.log(getStaticsData);
+
   return (
     <div>
       <div className="mt-8">
-        {/* small cards */}
         <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {/* Sales Card */}
           <div className="relative flex flex-col bg-clip-border rounded-lg border border-[#ddd] bg-white text-gray-700">
