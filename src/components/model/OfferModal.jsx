@@ -5,9 +5,9 @@ import { useAxios } from "../../hooks/useAxios";
 import { Modal } from "../../utils/Model";
 
 export const OfferModal = ({ isOpen, setIsOpen, offerInfoData }) => {
+  const { user } = useAuth();
   const { register, handleSubmit } = useForm();
   const axios = useAxios();
-  const { user } = useAuth();
 
   //   Make an Offer Property Functions
   const onSubmit = async (data) => {
@@ -16,9 +16,9 @@ export const OfferModal = ({ isOpen, setIsOpen, offerInfoData }) => {
       rooms_id: offerInfoData._id,
       offer_amount: offerAmount,
       offer_date: new Date(),
-      email: user?.email,
       name: user?.displayName,
       ...offerInfoData,
+      email: user?.email,
     };
 
     try {

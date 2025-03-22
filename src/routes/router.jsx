@@ -14,6 +14,7 @@ import { MyOwnPropertyPage } from "../pages/dashboard/MyOwnPropertyPage";
 import { ProfilePage } from "../pages/dashboard/ProfilePage";
 import { RequestPropertyPage } from "../pages/dashboard/RequestPropertyPage";
 import { SoldPropertyPage } from "../pages/dashboard/SoldPropertyPage";
+import { WishlistPage } from "../pages/dashboard/WishlistPage";
 import Homepage from "../pages/Homepage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { RoomDetails } from "../pages/RoomDetails";
@@ -51,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: "my-profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "offer-wishlist",
+        element: <WishlistPage />,
       },
       // AGENT ROUTES HERE
       {
