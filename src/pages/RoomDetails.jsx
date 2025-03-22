@@ -4,6 +4,7 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css";
 import { useLoaderData } from "react-router-dom";
+import { AgentContent } from "../components/AgentContent";
 import { PaymentModal } from "../components/model/PaymentModal";
 import { RoomContent } from "../components/RoomContent";
 import { ImageCard } from "../components/shared/card/ImageCard";
@@ -120,6 +121,7 @@ export const RoomDetails = () => {
               inputRanges={[]}
             />
           </div>
+          <AgentContent offerInfoData={viewRoomInfo?.data} />
         </div>
 
         {/* Right Section - Booking Card (col-span-4) */}
