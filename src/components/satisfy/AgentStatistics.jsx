@@ -118,7 +118,7 @@ export const AgentStatistics = () => {
             </div>
           </div>
           {/* Total Rooms */}
-          {/* <div className="relative flex flex-col bg-clip-border rounded-lg border border-[#ddd] bg-white text-gray-700">
+          <div className="relative flex flex-col bg-clip-border rounded-lg border border-[#ddd] bg-white text-gray-700">
             <div
               className={`bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center from-pink-600 to-pink-400 text-white shadow-pink-500/40`}
             >
@@ -140,13 +140,13 @@ export const AgentStatistics = () => {
             </div>
             <div className="p-4 text-right">
               <p className="block antialiased font-sans text-lg leading-normal font-bold text-blue-gray-600">
-                Total Rooms
+                Offer Rooms
               </p>
               <h4 className="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-blue-gray-900">
-                {getStaticsData?.totalRooms}
+                {getStaticsData?.totalOfferCount}
               </h4>
             </div>
-          </div> */}
+          </div>
         </div>
         <div className="mb-4 grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
           {/* Total Sales Graph */}
