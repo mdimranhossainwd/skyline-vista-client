@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { OfferTableCard } from "../../components/shared/card/OfferTableCard";
 import { Heading } from "../../components/shared/heading/Heading";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
@@ -24,6 +25,7 @@ export const WishlistPage = () => {
   return (
     <div>
       <Heading heading="Your Wishlist Property" />
+      <OfferTableCard properties={getOfferProperty} />
     </div>
   );
 };
