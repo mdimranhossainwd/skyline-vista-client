@@ -7,8 +7,20 @@ export const OfferTableCard = ({ properties, refetch }) => {
   const [role] = useRole();
   console.log("role==========>", role);
 
-  //   Update Offer Room status
-  const handleRejectRoom = async (id, currentStatus) => {
+  //   Only User/Guest Canceled His Offer Room Data Functions
+  const handleDeletedRoom = async (id) => {
+    try {
+      await axios.delete(`/delete-offer-room/${id}`);
+      toast.success("Offer Room Canceled Successfully");
+      refetch();
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(id);
+  };
+
+  //   Update Offer Room status Functions
+  const handleUpdateStatustRoom = async (id, currentStatus) => {
     try {
       await axios.patch(`/update-offer-status/${id}`, {
         offer_status: currentStatus,
@@ -73,7 +85,7 @@ export const OfferTableCard = ({ properties, refetch }) => {
                 className={`px-2 py-1 rounded text-xs ${
                   property.offer_status === "Requested"
                     ? "bg-blue-100 text-blue-600"
-                    : property.status === "Brought"
+                    : property.offer_status === "Brought"
                     ? "bg-green-100 text-green-600"
                     : "bg-red-100 text-red-600"
                 }`}
@@ -90,15 +102,43 @@ export const OfferTableCard = ({ properties, refetch }) => {
 
             <div className="flex justify-center items-center">
               {role === "agent" && (
-                <button className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
-                  check
+                <button
+                  onClick={() =>
+                    handleUpdateStatustRoom(property?._id, "Brought")
+                  }
+                  disabled={property.offer_status === "Brought"}
+                  className="p-2.5 rounded-md hover:bg-[#DDD] disabled:cursor-not-allowed"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-circle-check-big"
+                  >
+                    <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                    <path d="m9 11 3 3L22 4" />
+                  </svg>
                 </button>
               )}
               <div>
                 <button
-                  onClick={() => handleRejectRoom(property?._id, "Rejected")}
-                  disabled={property.offer_status === "Rejected"}
-                  className="p-2.5 rounded-md hover:bg-[#DDD] disabled:cursor-not-allowed cursor-pointer"
+                  onClick={() => {
+                    if (role === "agent") {
+                      handleUpdateStatustRoom(property?._id, "Rejected");
+                    } else if (role === "user") {
+                      handleDeletedRoom(property?._id);
+                    }
+                  }}
+                  disabled={
+                    role === "agent" && property.offer_status === "Rejected"
+                  }
+                  className="p-2.5 rounded-md hover:bg-[#DDD] disabled:cursor-not-allowed"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
