@@ -1,18 +1,27 @@
+import { useRole } from "../../../hooks/useRole";
+
 export const OfferTableCard = ({ properties }) => {
   console.log(properties);
+  const [role] = useRole();
 
   return (
     <div className="w-full overflow-x-auto">
       <div className="w-full min-w-[1000px] border-collapse text-left">
         {/* Table Header */}
         <div
-          className="bg-[#444] text-white grid 
-           grid-cols-9
-           px-4 py-3 text-center font-bold"
+          className={`bg-[#444] text-white grid 
+           ${role === "user" ? "grid-cols-9" : "grid-cols-8"}
+           px-4 py-3 text-center font-bold`}
         >
           <div>No</div>
-          <div>Agent</div>
-          <div>Location</div>
+          {role === "user" && (
+            <>
+              <div>Guest</div>
+              <div>Location</div>
+            </>
+          )}
+          {role === "agent" && <div>Agent</div>}
+          {/* <div>Location</div> */}
           <div>Title</div>
           <div>Price</div>
           <div>Offer Price</div>
@@ -24,11 +33,19 @@ export const OfferTableCard = ({ properties }) => {
         {properties?.map((property, index) => (
           <div
             key={property._id}
-            className="grid grid-cols-9 items-center text-center border-b-[1px] border-[#DDD] hover:bg-gray-100 px-4 py-2"
+            className={`grid ${
+              role === "agent" ? "grid-cols-8" : "grid-cols-9"
+            }  items-center text-center border-b-[1px] border-[#DDD] hover:bg-gray-100 px-4 py-2`}
           >
             <div>{index + 1}.</div>
-            <div>{property?.offer?.host?.name}</div>
-            <div>{property?.offer?.location?.country}</div>
+            {role === "user" && (
+              <>
+                <div>{property?.offer?.host?.name}</div>
+                <div>{property?.offer?.location?.country}</div>
+              </>
+            )}
+            {role === "agent" && <div>{property?.name}</div>}
+
             <div>
               {property?.offer?.title.length > 20
                 ? `${property?.offer?.title.slice(0, 10)}...`
@@ -56,7 +73,26 @@ export const OfferTableCard = ({ properties }) => {
               year: "numeric",
             })}
 
-            <div className="flex gap-2 justify-center items-center">
+            <div className="flex justify-center items-center">
+              {role === "agent" && (
+                <div className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-circle-check-big"
+                  >
+                    <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                    <path d="m9 11 3 3L22 4" />
+                  </svg>
+                </div>
+              )}
               <div className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
