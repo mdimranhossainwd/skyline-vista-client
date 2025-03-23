@@ -25,7 +25,7 @@ export const WishlistPage = () => {
   return (
     <div>
       <Heading heading="Your Wishlist Property" />
-      <OfferTableCard properties={getOfferProperty} />
+      <OfferTableCard properties={getOfferProperty} refetch={refetch} />
     </div>
   );
 };

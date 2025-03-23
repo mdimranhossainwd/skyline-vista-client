@@ -1,8 +1,24 @@
+import toast from "react-hot-toast";
+import { useAxios } from "../../../hooks/useAxios";
 import { useRole } from "../../../hooks/useRole";
 
-export const OfferTableCard = ({ properties }) => {
-  console.log(properties);
+export const OfferTableCard = ({ properties, refetch }) => {
+  const axios = useAxios();
   const [role] = useRole();
+  console.log("role==========>", role);
+
+  //   Update Offer Room status
+  const handleRejectRoom = async (id, currentStatus) => {
+    try {
+      await axios.patch(`/update-offer-status/${id}`, {
+        offer_status: currentStatus,
+      });
+      toast.success("Update Status successfully");
+      refetch();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="w-full overflow-x-auto">
@@ -10,18 +26,17 @@ export const OfferTableCard = ({ properties }) => {
         {/* Table Header */}
         <div
           className={`bg-[#444] text-white grid 
-           ${role === "user" ? "grid-cols-9" : "grid-cols-8"}
+           ${role === "agent" ? "grid-cols-8" : "grid-cols-9"}
            px-4 py-3 text-center font-bold`}
         >
           <div>No</div>
           {role === "user" && (
             <>
-              <div>Guest</div>
+              <div>Agent</div>
               <div>Location</div>
             </>
           )}
-          {role === "agent" && <div>Agent</div>}
-          {/* <div>Location</div> */}
+          {role === "agent" && <div>Guest</div>}
           <div>Title</div>
           <div>Price</div>
           <div>Offer Price</div>
@@ -75,7 +90,16 @@ export const OfferTableCard = ({ properties }) => {
 
             <div className="flex justify-center items-center">
               {role === "agent" && (
-                <div className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
+                <button className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
+                  check
+                </button>
+              )}
+              <div>
+                <button
+                  onClick={() => handleRejectRoom(property?._id, "Rejected")}
+                  disabled={property.offer_status === "Rejected"}
+                  className="p-2.5 rounded-md hover:bg-[#DDD] disabled:cursor-not-allowed cursor-pointer"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -86,32 +110,12 @@ export const OfferTableCard = ({ properties }) => {
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    class="lucide lucide-circle-check-big"
+                    class="lucide lucide-x"
                   >
-                    <path d="M21.801 10A10 10 0 1 1 17 3.335" />
-                    <path d="m9 11 3 3L22 4" />
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
                   </svg>
-                </div>
-              )}
-              <div className="p-2.5 rounded-md hover:bg-[#DDD] cursor-pointer">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-trash-2"
-                >
-                  <path d="M3 6h18" />
-                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                  <line x1="10" x2="10" y1="11" y2="17" />
-                  <line x1="14" x2="14" y1="11" y2="17" />
-                </svg>
+                </button>
               </div>
             </div>
           </div>

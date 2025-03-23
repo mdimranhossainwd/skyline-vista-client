@@ -27,7 +27,7 @@ export const RequestPropertyPage = () => {
   return (
     <>
       <Heading heading="Brought Property Request Here ." />
-      <OfferTableCard properties={getOfferRequestProperty} />
+      <OfferTableCard properties={getOfferRequestProperty} refetch={refetch} />
     </>
   );
 };
