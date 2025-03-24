@@ -1,16 +1,13 @@
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import { Modal } from "../../utils/Model";
-
+import { OfferCheckoutForm } from "../form/OfferCheckoutForm";
+const stripePromise = loadStripe(
+  import.meta.env.VITE_SKYLINE_VISTA_STRIPE_PK_TEST_KEY
+);
 export const OfferPaymentModel = ({ isOpen, setIsOpen, property }) => {
-  const {
-    _id,
-    offer,
-    offer_status,
-    offer_amount,
-    offer_date,
-    email,
-    name,
-    __v,
-  } = property || {};
+  const { _id, offer, offer_status, amount, offer_date, email, name, __v } =
+    property || {};
 
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen} title="Brought This Property">
@@ -18,7 +15,7 @@ export const OfferPaymentModel = ({ isOpen, setIsOpen, property }) => {
         <span className="text-lg">{offer?.title}</span> <br />
         <span>Your Email: {email}</span> <br />
         <span>Host Name: {offer?.host?.name}</span> <br />
-        <span>Offer Amount: $ {offer_amount}</span> <br />
+        <span>Offer Amount: $ {amount}</span> <br />
         <span>
           Offer Status:{" "}
           <span
@@ -35,14 +32,14 @@ export const OfferPaymentModel = ({ isOpen, setIsOpen, property }) => {
         </span>
       </div>
 
-      {/* <Elements stripe={stripePromise}>
-        <CheckoutForm
+      <Elements stripe={stripePromise}>
+        <OfferCheckoutForm
           isOpen={isOpen}
           setIsOpen={setIsOpen}
-          viewRoomInfo={viewRoomInfo}
-          totalPrice={totalPrice}
+          viewRoomInfo={property}
+          amount={amount}
         />
-      </Elements> */}
+      </Elements>
     </Modal>
   );
 };

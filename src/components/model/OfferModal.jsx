@@ -14,7 +14,7 @@ export const OfferModal = ({ isOpen, setIsOpen, offerInfoData }) => {
     const { offerAmount } = data;
     const offerRoomData = {
       rooms_id: offerInfoData._id,
-      offer_amount: offerAmount,
+      amount: offerAmount,
       offer_date: new Date(),
       name: user?.displayName,
       ...offerInfoData,

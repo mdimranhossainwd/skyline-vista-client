@@ -82,7 +82,7 @@ export const OfferTableCard = ({ properties, refetch }) => {
                 : property?.offer?.title}
             </div>
             <div>${property?.offer?.pricing?.price_per_night} / night</div>
-            <div>${property?.offer_amount}</div>
+            <div>${property?.amount}</div>
             <div>
               <span
                 className={`px-2 py-1 rounded text-xs ${
