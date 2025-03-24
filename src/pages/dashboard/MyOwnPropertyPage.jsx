@@ -10,7 +10,7 @@ export const MyOwnPropertyPage = () => {
 
   //  Load all Agent-own-Properties Data
   const getData = async () => {
-    const { data } = await axios.get(`/get-room-by-email?email=${user?.email}`);
+    const { data } = await axios.get("/get-brought-room");
     return data?.data;
   };
 

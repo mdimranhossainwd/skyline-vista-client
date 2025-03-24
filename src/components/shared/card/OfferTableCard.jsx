@@ -173,6 +173,7 @@ export const OfferTableCard = ({ properties, refetch }) => {
               isOpen={isOpen}
               setIsOpen={setIsOpen}
               property={property}
+              refetch={refetch}
             />
           </div>
         ))}

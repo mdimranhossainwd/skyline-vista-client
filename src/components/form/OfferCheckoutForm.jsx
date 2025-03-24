@@ -8,6 +8,7 @@ export const OfferCheckoutForm = ({
   isOpen,
   setIsOpen,
   amount,
+  refetch,
   viewRoomInfo,
 }) => {
   const stripe = useStripe();
@@ -81,8 +82,12 @@ export const OfferCheckoutForm = ({
         console.log(paymentInfo);
         try {
           await axios.post("/offer-add-to-payment", paymentInfo);
+          await axios.patch(`/update-offer-status/${viewRoomInfo._id}`, {
+            offer_status: "Brought",
+          });
           toast.success("Congrats ! Property Brought Successfully");
           setIsOpen(!isOpen);
+          refetch();
         } catch (err) {
           console.log(err);
         }
