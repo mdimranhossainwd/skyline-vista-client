@@ -90,6 +90,8 @@ export const OfferTableCard = ({ properties, refetch }) => {
                     ? "bg-blue-100 text-blue-600"
                     : property.offer_status === "Brought"
                     ? "bg-green-100 text-green-600"
+                    : property.offer_status === "Proceed"
+                    ? "bg-orange-100 text-orange-600"
                     : "bg-red-100 text-red-600"
                 }`}
               >
@@ -107,9 +109,9 @@ export const OfferTableCard = ({ properties, refetch }) => {
               {role === "agent" && (
                 <button
                   onClick={() =>
-                    handleUpdateStatustRoom(property?._id, "Brought")
+                    handleUpdateStatustRoom(property?._id, "Proceed")
                   }
-                  disabled={property.offer_status === "Brought"}
+                  disabled={property.offer_status === "Proceed"}
                   className="p-2.5 rounded-md hover:bg-[#DDD] disabled:cursor-not-allowed"
                 >
                   <svg

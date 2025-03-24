@@ -10,7 +10,7 @@ export const MyOwnPropertyPage = () => {
 
   //  Load all Agent-own-Properties Data
   const getData = async () => {
-    const { data } = await axios.get("/get-brought-room");
+    const { data } = await axios.get(`/get-room-by-email?email=${user?.email}`);
     return data?.data;
   };
 
@@ -25,7 +25,7 @@ export const MyOwnPropertyPage = () => {
   return (
     <>
       <div className="w-full mx-auto">
-        <Heading heading="Your Own Property Here." />
+        <Heading heading="My Added Property Here." />
         <PropertyTableCard properties={getAgentOwnProperty} refetch={refetch} />
       </div>
     </>
