@@ -128,7 +128,7 @@ export const RoomDetails = () => {
               inputRanges={[]}
             />
           </div>
-          <AgentContent offerInfoData={viewRoomInfo?.data} />
+          <AgentContent host={host} offerInfoData={viewRoomInfo?.data} />
         </div>
 
         {/* Right Section - Booking Card (col-span-4) */}
