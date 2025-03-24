@@ -1,6 +1,8 @@
 import React from "react";
+import { useRole } from "../../../hooks/useRole";
 
 export const SoldRoomCard = ({ property }) => {
+  const [role] = useRole();
   return (
     <div className="w-full overflow-x-auto">
       <div className="w-full min-w-[1000px] border-collapse text-left">
@@ -12,7 +14,9 @@ export const SoldRoomCard = ({ property }) => {
         >
           <div>No</div>
 
-          <div>Host</div>
+          {role === "agent" && <div>Guest</div>}
+          {role === "user" && <div>Host</div>}
+
           <div>Location</div>
 
           <div>Title</div>
@@ -30,7 +34,9 @@ export const SoldRoomCard = ({ property }) => {
           >
             <div>{index + 1}.</div>
 
-            <div>{property?.offer?.host?.name}</div>
+            {role === "user" && <div>{property?.offer?.host?.name}</div>}
+            {role === "agent" && <div>{property?.name}</div>}
+
             <div>{property?.offer?.location?.country}</div>
 
             <div>
