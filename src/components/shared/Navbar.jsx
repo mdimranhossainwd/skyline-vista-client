@@ -15,7 +15,7 @@ export const Navbar = () => {
       <NavLink>Property</NavLink>
       <NavLink>Contact</NavLink>
       <NavLink>Service</NavLink>
-      {!user && <NavLink>Login</NavLink>}
+      {!user && <NavLink to={"/sign-in"}>Login</NavLink>}
     </>
   );
 

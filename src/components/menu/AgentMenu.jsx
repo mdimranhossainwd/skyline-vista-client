@@ -5,31 +5,31 @@ export const AgentMenu = () => {
     <>
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
-        to="profile"
+        to="my-profile"
       >
         My Profile
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
-        to="profile"
+        to="add-properties"
       >
         Add Property
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
-        to="profile"
+        to="my-own-properties"
       >
         My Properties
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
-        to="profile"
+        to="my-sold-porperties"
       >
         Sold Properties
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
-        to="profile"
+        to="brought-property-request"
       >
         Requested Properties
       </NavLink>

@@ -5,13 +5,13 @@ export const UserMenu = () => {
     <>
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
-        to="profile"
+        to="my-profile"
       >
         My Profile
       </NavLink>
       <NavLink
         className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
-        to="profile"
+        to="offer-wishlist"
       >
         Wishlist
       </NavLink>

@@ -154,7 +154,9 @@ export const SignUp = () => {
           <div className="flex items-center justify-center mt-6">
             <p className="text-sm font-medium">
               Already Have an account ?{" "}
-              <Link className="text-[#E21B60]">Sign In</Link>
+              <Link to={"/sign-in"} className="text-[#E21B60]">
+                Sign In
+              </Link>
             </p>
           </div>
         </div>

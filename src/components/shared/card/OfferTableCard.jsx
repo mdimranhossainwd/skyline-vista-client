@@ -62,7 +62,7 @@ export const OfferTableCard = ({ properties, refetch }) => {
             key={property._id}
             className={`grid ${
               role === "agent" ? "grid-cols-8" : "grid-cols-9"
-            }  items-center text-center border-b-[1px] border-[#DDD] hover:bg-gray-100 px-4 py-2`}
+            }  items-center text-center border-b-[1px] border-[#DDD] hover:bg-white px-4 py-2`}
           >
             <div>{index + 1}.</div>
             {role === "user" && (

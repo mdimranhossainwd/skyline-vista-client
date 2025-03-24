@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Calendar } from "react-date-range";
+import { GridLoader } from "react-spinners";
 import { useAxios } from "../../hooks/useAxios";
 import { SalesChart } from "../shared/SalesChart";
 
@@ -13,10 +14,22 @@ export const AdminStatistics = () => {
   };
 
   //   Fetch Data using to TanSt Query
-  const { data: getStaticsData, refetch } = useQuery({
+  const {
+    data: getStaticsData,
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["getStaticsData"],
     queryFn: getData,
   });
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <GridLoader color="#E11D48" size={15} />
+      </div>
+    );
+  }
   console.log(getStaticsData);
 
   return (

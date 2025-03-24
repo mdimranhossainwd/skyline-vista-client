@@ -45,7 +45,7 @@ export const UserCard = ({ user, refetch }) => {
         {user?.map((user, index) => (
           <div
             key={user._id}
-            className="grid items-center grid-cols-6 text-center border-b-[1px] border-[#DDD] hover:bg-gray-100 px-4 py-2"
+            className="grid items-center grid-cols-6 text-center border-b-[1px] border-[#DDD] hover:bg-white px-4 py-2"
           >
             <div>{index + 1}</div>
             <div>{user.name}</div>

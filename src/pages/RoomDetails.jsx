@@ -8,10 +8,12 @@ import { AgentContent } from "../components/AgentContent";
 import { PaymentModal } from "../components/model/PaymentModal";
 import { RoomContent } from "../components/RoomContent";
 import { ImageCard } from "../components/shared/card/ImageCard";
+import { useAuth } from "../hooks/useAuth";
 
 export const RoomDetails = () => {
   const [isOpen, setIsOpen] = useState(false);
   const viewRoomInfo = useLoaderData();
+  const { user } = useAuth();
   const {
     host,
     location,
@@ -27,6 +29,7 @@ export const RoomDetails = () => {
     safety_features,
     room_status,
     status,
+    email,
     created_at,
     updated_at,
   } = viewRoomInfo?.data || {};
@@ -49,6 +52,10 @@ export const RoomDetails = () => {
       key: "selection",
     },
   ]);
+
+  // Check user email with room data
+  const isHost = email === user?.email;
+  console.log(isHost);
 
   return (
     <div className="container mx-auto px-6 lg:px-0">
@@ -152,10 +159,18 @@ export const RoomDetails = () => {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg mt-6 hover:cursor-pointer text-lg font-semibold"
+            disabled={isHost}
+            className={`w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg mt-6 text-lg font-semibold ${
+              isHost ? "opacity-50 cursor-not-allowed" : "hover:cursor-pointer"
+            }`}
           >
             Reserve
           </button>
+          {isHost && (
+            <p className="text-red-500 mt-2 text-center text-sm">
+              You can't reserve your own room.
+            </p>
+          )}
           <PaymentModal
             viewRoomInfo={viewRoomInfo?.data}
             isOpen={isOpen}

@@ -1,4 +1,5 @@
 import { DropdownMenu } from "@radix-ui/themes";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 const AvatarDropdown = () => {
@@ -29,7 +30,9 @@ const AvatarDropdown = () => {
           <p className="text-sm text-gray-500">{user?.email}</p>
         </div>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item>Dashboard</DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <NavLink to={`/dashboard`}>Dashboard</NavLink>
+        </DropdownMenu.Item>
         <DropdownMenu.Item color="red" onClick={handleLogOut}>
           Logout
         </DropdownMenu.Item>

@@ -18,6 +18,7 @@ import { WishlistPage } from "../pages/dashboard/WishlistPage";
 import Homepage from "../pages/Homepage";
 import { NotFoundPage } from "../pages/NotFoundPage";
 import { RoomDetails } from "../pages/RoomDetails";
+import { PrivateRoute } from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/view-room-details/:id",
-        element: <RoomDetails />,
+        element: (
+          <PrivateRoute>
+            <RoomDetails />,
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/api/rooms/get-room/${params.id}`),
       },
