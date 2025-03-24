@@ -105,7 +105,13 @@ export const OfferTableCard = ({ properties, refetch }) => {
               year: "numeric",
             })}
 
-            <div className="flex justify-center items-center">
+            <div
+              className={`flex gap-2 ${
+                property.offer_status === "Brought"
+                  ? "pointer-events-none opacity-50 cursor-not-allowed"
+                  : ""
+              }`}
+            >
               {role === "agent" && (
                 <button
                   onClick={() =>
@@ -162,12 +168,12 @@ export const OfferTableCard = ({ properties, refetch }) => {
                   </svg>
                 </button>
               </div>
-              {role === "user" && (
+              {role === "user" && property.offer_status === "Proceed" && (
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="cursor-pointer"
+                  className="cursor-pointer underline font-medium -mt-1"
                 >
-                  pay
+                  Pay
                 </button>
               )}
             </div>

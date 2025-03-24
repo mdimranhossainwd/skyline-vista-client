@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { AdminMenu } from "../components/menu/AdminMenu";
 import { AgentMenu } from "../components/menu/AgentMenu";
 import { UserMenu } from "../components/menu/UserMenu";
@@ -24,9 +24,12 @@ export const DashboardLayout = () => {
       <aside className="hidden md:flex w-60 bg-white p-5 overflow-auto">
         <nav>
           <div>
-            <h2 className="text-2xl mt-3 font-ubuntu font-semibold text-[#E21B60] ">
+            <Link
+              to={"/dashboard"}
+              className="text-2xl mt-3 font-ubuntu font-semibold text-[#E21B60] "
+            >
               Skyline
-            </h2>
+            </Link>
           </div>
           <div className="grid grid-cols-1 py-2 gap-2 mt-8">{menuItems}</div>
         </nav>
