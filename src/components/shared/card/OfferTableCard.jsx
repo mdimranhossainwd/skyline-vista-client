@@ -1,10 +1,13 @@
+import { useState } from "react";
 import toast from "react-hot-toast";
 import { useAxios } from "../../../hooks/useAxios";
 import { useRole } from "../../../hooks/useRole";
+import { OfferPaymentModel } from "../../model/OfferPaymentModel";
 
 export const OfferTableCard = ({ properties, refetch }) => {
   const axios = useAxios();
   const [role] = useRole();
+  const [isOpen, setIsOpen] = useState(false);
   console.log("role==========>", role);
 
   //   Only User/Guest Canceled His Offer Room Data Functions
@@ -157,7 +160,20 @@ export const OfferTableCard = ({ properties, refetch }) => {
                   </svg>
                 </button>
               </div>
+              {role === "user" && (
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="cursor-pointer"
+                >
+                  pay
+                </button>
+              )}
             </div>
+            <OfferPaymentModel
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+              property={property}
+            />
           </div>
         ))}
       </div>
