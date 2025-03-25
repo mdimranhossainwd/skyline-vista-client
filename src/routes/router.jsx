@@ -38,13 +38,19 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/rooms/get-room/${params.id}`),
+          fetch(
+            `https://skyline-vista-server.vercel.app/api/rooms/get-room/${params.id}`
+          ),
       },
     ],
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
     children: [
       {
         index: true,
@@ -83,7 +89,9 @@ export const router = createBrowserRouter([
         path: "update-properties/:id",
         element: <UpdatePropertyForm />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/api/rooms/get-room/${params.id}`),
+          fetch(
+            `https://skyline-vista-server.vercel.app/api/rooms/get-room/${params.id}`
+          ),
       },
 
       // ADMIN ROUTES HERE
