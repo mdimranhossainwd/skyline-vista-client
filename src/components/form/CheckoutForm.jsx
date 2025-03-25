@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 import "./CheckoutForm.css";
@@ -15,6 +16,7 @@ export const CheckoutForm = ({
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState();
   const axios = useAxios();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (totalPrice && totalPrice > 1) {
@@ -82,7 +84,11 @@ export const CheckoutForm = ({
         try {
           await axios.post("/add-to-payment", paymentInfo);
           toast.success("Congrats ! Room Booking Successfully");
+          await axios.patch(`/update-room-status/${viewRoomInfo?._id}`, {
+            room_status: "Booked",
+          });
           setIsOpen(!isOpen);
+          navigate("/dashboard/payment-history");
         } catch (err) {
           console.log(err);
         }

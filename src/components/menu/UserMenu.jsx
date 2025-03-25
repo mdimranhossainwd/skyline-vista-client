@@ -27,6 +27,12 @@ export const UserMenu = () => {
       >
         My Reviews
       </NavLink>
+      <NavLink
+        className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
+        to="payment-history"
+      >
+        Payment History
+      </NavLink>
     </>
   );
 };

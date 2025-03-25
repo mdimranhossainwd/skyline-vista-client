@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 
 export const AddPropertyForm = () => {
   const axios = useAxios();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -76,6 +78,7 @@ export const AddPropertyForm = () => {
       await axios.post("/add-room", finalData);
       toast.success("Properties Added Successfully");
       reset();
+      navigate("/dashboard/my-own-properties");
     } catch (error) {
       console.log(error);
     }

@@ -27,6 +27,12 @@ export const AdminMenu = () => {
       >
         Manage Reviews
       </NavLink>
+      <NavLink
+        className={({ isActive }) => (isActive ? "text-[#E21B60]" : "")}
+        to="payment-history"
+      >
+        Payment History
+      </NavLink>
     </>
   );
 };

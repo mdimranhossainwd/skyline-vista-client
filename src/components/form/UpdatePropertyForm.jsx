@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 import { Heading } from "../shared/heading/Heading";
@@ -8,6 +8,7 @@ import { Heading } from "../shared/heading/Heading";
 export const UpdatePropertyForm = () => {
   const axios = useAxios();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const getRoomData = useLoaderData();
 
   const {
@@ -93,6 +94,7 @@ export const UpdatePropertyForm = () => {
       await axios.put(`/update-room/${_id}`, finalData);
       toast.success("Properties Update Successfully");
       reset();
+      navigate("/dashboard/my-own-properties");
     } catch (error) {
       console.log(error);
     }

@@ -1,9 +1,11 @@
 import { Trash2 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useAxios } from "../../../hooks/useAxios";
+import { useRole } from "../../../hooks/useRole";
 
 export const ReviewCard = ({ review, refetch }) => {
   const axios = useAxios();
+  const [role] = useRole();
 
   //  Delete Review Handler Function
   const handleReviewDelete = async (id) => {
@@ -68,12 +70,17 @@ export const ReviewCard = ({ review, refetch }) => {
               {review?.rating}
             </span>
             {/* Delete Button */}
-            <button
-              onClick={() => handleReviewDelete(review._id)}
-              className="flex items-center gap-1 text-red-400 hover:text-red-500 transition"
-            >
-              <Trash2 size={18} />
-            </button>
+
+            {role === "admin" ? (
+              <button
+                onClick={() => handleReviewDelete(review._id)}
+                className="flex items-center gap-1 text-red-400 hover:text-red-500 transition"
+              >
+                <Trash2 size={18} />
+              </button>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       ))}

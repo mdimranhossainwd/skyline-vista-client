@@ -8,7 +8,7 @@ export const AgentContent = ({ offerInfoData, host }) => {
     <>
       <div className="p-6">
         <h2 className="text-2xl font-semibold mb-4">Meet your host</h2>
-        <div className="flex gap-4">
+        <div className="lg:flex gap-4">
           <div className="">
             <div className="bg-gray-50 p-4 rounded-lg">
               <img

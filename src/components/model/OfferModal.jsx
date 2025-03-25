@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 import { Modal } from "../../utils/Model";
@@ -8,7 +9,7 @@ export const OfferModal = ({ isOpen, setIsOpen, offerInfoData }) => {
   const { user } = useAuth();
   const { register, handleSubmit } = useForm();
   const axios = useAxios();
-
+  const navigate = useNavigate();
   //   Make an Offer Property Functions
   const onSubmit = async (data) => {
     const { offerAmount } = data;
@@ -25,6 +26,7 @@ export const OfferModal = ({ isOpen, setIsOpen, offerInfoData }) => {
       await axios.post("/add-to-offer", offerRoomData);
       setIsOpen(false);
       toast.success("Offer Room sucessfully");
+      navigate("/dashboard/offer-wishlist");
     } catch (error) {
       console.log(error);
     }

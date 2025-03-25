@@ -6,6 +6,7 @@ import "react-date-range/dist/theme/default.css";
 import { useLoaderData } from "react-router-dom";
 import { AgentContent } from "../components/AgentContent";
 import { PaymentModal } from "../components/model/PaymentModal";
+import { ReviewSections } from "../components/ReviewSections";
 import { RoomContent } from "../components/RoomContent";
 import { ImageCard } from "../components/shared/card/ImageCard";
 import { useAuth } from "../hooks/useAuth";
@@ -44,6 +45,14 @@ export const RoomDetails = () => {
   );
 
   console.log(totalPrice);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const startDate = new Date(availability?.available_dates[0]);
+  const endDate = new Date(availability?.available_dates[2]);
+
+  const isDateExpired = today < startDate || today > endDate;
+  console.log(isDateExpired);
 
   const [state, setState] = useState([
     {
@@ -159,12 +168,15 @@ export const RoomDetails = () => {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            disabled={isHost}
-            className={`w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg mt-6 text-lg font-semibold ${
-              isHost ? "opacity-50 cursor-not-allowed" : "hover:cursor-pointer"
+            disabled={isHost || room_status === "Booked" || isDateExpired}
+            className={`w-full bg-gradient-to-r from-pink-500 to-red-500 text-white py-3 rounded-lg mt-6 text-lg font-medium ${
+              isHost || room_status === "Booked" || isDateExpired
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:cursor-pointer"
             }`}
           >
-            Reserve
+            {room_status === "Booked" ? "Booked" : "Reserve"}
+            {/* Reserve */}
           </button>
           {isHost && (
             <p className="text-red-500 mt-2 text-center text-sm">
@@ -189,6 +201,7 @@ export const RoomDetails = () => {
           </div>
         </div>
       </div>
+      <ReviewSections />
     </div>
   );
 };

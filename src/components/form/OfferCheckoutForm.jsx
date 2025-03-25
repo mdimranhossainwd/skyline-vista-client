@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useAxios } from "../../hooks/useAxios";
 import "./CheckoutForm.css";
@@ -16,6 +17,7 @@ export const OfferCheckoutForm = ({
   const elements = useElements();
   const [clientSecret, setClientSecret] = useState();
   const axios = useAxios();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (amount && amount > 1) {
@@ -88,6 +90,7 @@ export const OfferCheckoutForm = ({
           toast.success("Congrats ! Property Brought Successfully");
           setIsOpen(!isOpen);
           refetch();
+          navigate("/dashboard/my-sold-porperties");
         } catch (err) {
           console.log(err);
         }

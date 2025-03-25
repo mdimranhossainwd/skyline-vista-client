@@ -11,6 +11,7 @@ import { AllUsersPage } from "../pages/dashboard/AllUsersPage";
 import { DashboardOverviewPage } from "../pages/dashboard/DashboardOverviewPage";
 import { ManagePropertiesPage } from "../pages/dashboard/ManagePropertiesPage";
 import { MyOwnPropertyPage } from "../pages/dashboard/MyOwnPropertyPage";
+import { PaymentHistoryPage } from "../pages/dashboard/PaymentHistoryPage";
 import { ProfilePage } from "../pages/dashboard/ProfilePage";
 import { RequestPropertyPage } from "../pages/dashboard/RequestPropertyPage";
 import { SoldPropertyPage } from "../pages/dashboard/SoldPropertyPage";
@@ -39,7 +40,7 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://skyline-vista-server.vercel.app/api/rooms/get-room/${params.id}`
+            `https://skyline-vista-server.vercel.app/api/rooms/get-room/${params?.id}`
           ),
       },
     ],
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
       {
         path: "offer-wishlist",
         element: <WishlistPage />,
+      },
+      {
+        path: "payment-history",
+        element: <PaymentHistoryPage />,
       },
       // AGENT ROUTES HERE
       {
