@@ -33,3 +33,28 @@ The main motivation behind Skyline Vista was to create a real-world MERN stack-b
 - 📱 Fully responsive layout (Mobile, Tablet, Desktop).
 
 ---
+
+---
+
+## 🛠️ Technologies Used
+
+### 👨‍💻 Frontend
+- React.js
+- React Router DOM
+- Tailwind CSS + DaisyUI
+- TanStack React Query
+- Axios
+- Chart.js / Recharts
+- Firebase Authentication
+
+### 🔧 Backend
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Stripe Payment Gateway
+- JSON Web Token (JWT) for authentication
+- CORS & Dotenv for environment handling
+
+---
+
