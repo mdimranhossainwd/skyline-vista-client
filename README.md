@@ -17,3 +17,19 @@ The main motivation behind Skyline Vista was to create a real-world MERN stack-b
 - Implements secure payment gateway integration for smooth transactions.
 
 ---
+
+---
+
+## ✨ Features
+
+- 🏠 Property listing by agents/hosts.
+- 📊 Dynamic dashboards for agents with charts (listings, revenue, bookings).
+- 🔐 Multi-role authentication system (Customer, Agent, Admin).
+- 💳 Stripe payment integration.
+- 📈 Earnings calculation and visualization per agent.
+- 📅 Booking management.
+- 📷 Image uploads for rooms.
+- 🔄 Real-time UI updates using TanStack Query.
+- 📱 Fully responsive layout (Mobile, Tablet, Desktop).
+
+---
